@@ -10,17 +10,20 @@ import {
 export default function Header() {
   return (
     <header className="bg-white shadow-lg py-3 text-sm">
-      <div className="flex justify-between items-center bg-black text-white p-2 font-thin">
-        <div className="flex items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-center bg-black text-white p-2 font-thin">
+        <div className="flex items-center mb-2 sm:mb-0">
           <FaPhone className="mr-2" />
-          <span>+123-456-789</span>
+          <span className="text-sm sm:text-base">+123-456-789</span>
         </div>
-        <p className="text-center mx-auto absolute left-1/2 transform -translate-x-1/2">
+        <p className="flex-grow text-center sm:text-base text-sm">
           Open everyday 9am to 10pm
         </p>
+
         <div className="flex items-center">
-          <FaMapMarkerAlt />
-          <span>1257 Shutter Street, Lensville, CA 90210, United States</span>
+          <FaMapMarkerAlt className="hidden sm:inline" />
+          <span className="text-sm sm:text-base">
+            1257 Shutter Street, Lensville, CA 90210, United States
+          </span>
         </div>
       </div>
       <div className="flex items-center max-w-6xl mx-auto p-3">
