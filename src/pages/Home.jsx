@@ -15,7 +15,7 @@ export default function Home() {
           Call to Action
         </button>
         <div
-          className="relative w-[1128px] h-[667px] flex justify-center items-end rounded-md"
+          className="relative w-[1128px] h-[720px] flex justify-center items-end rounded-md"
           style={{
             backgroundImage: "url('../../images/sony_a7cr.jpeg')",
             backgroundSize: "cover",
