@@ -1,9 +1,28 @@
 import { Link } from "react-router-dom";
-import { FaSearch, FaShoppingCart, FaUserAlt } from "react-icons/fa";
+import {
+  FaSearch,
+  FaShoppingCart,
+  FaUserAlt,
+  FaPhone,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 
 export default function Header() {
   return (
-    <header className="bg-white shadow-lg py-3">
+    <header className="bg-white shadow-lg py-3 text-sm">
+      <div className="flex justify-between items-center bg-black text-white p-2 font-thin">
+        <div className="flex items-center">
+          <FaPhone className="mr-2" />
+          <span>+123-456-789</span>
+        </div>
+        <p className="text-center mx-auto absolute left-1/2 transform -translate-x-1/2">
+          Open everyday 9am to 10pm
+        </p>
+        <div className="flex items-center">
+          <FaMapMarkerAlt />
+          <span>1257 Shutter Street, Lensville, CA 90210, United States</span>
+        </div>
+      </div>
       <div className="flex items-center max-w-6xl mx-auto p-3">
         <Link to="/" className="absolute left-0 flex-shrink-0">
           <h1 className="font-bold text-lg sm:text-xl">
