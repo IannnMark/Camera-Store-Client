@@ -53,9 +53,9 @@ export default function SignIn() {
           Login
         </h1>
         <p className="text-1xl">
-          Welcome to Pro Capture – Capture every moment with the latest <br />{" "}
-          gear at your fingertips. Log in to explore exclusive deals, track{" "}
-          <br /> your orders, and enhance your photography journey.
+          Welcome to Pro Capture – Capture every moment with the latest gear at
+          your fingertips. Log in to explore exclusive deals, track your orders,
+          and enhance your photography journey.
         </p>
 
         <form onSubmit={handleSubmit} className="mt-7 flex flex-col">
