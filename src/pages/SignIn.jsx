@@ -1,7 +1,51 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import {
+  signInFailure,
+  signInStart,
+  signInSuccess,
+} from "../redux/user/userSlice";
 import OAuth from "../components/OAuth";
 
 export default function SignIn() {
+  const [formData, setFormData] = useState({});
+  const { loading, error } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      dispatch(signInStart());
+      const res = await fetch("/api/auth/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+      console.log(data);
+      if (data.success === false) {
+        dispatch(signInFailure(data.message));
+        return;
+      }
+      dispatch(signInSuccess(data));
+      navigate("/");
+    } catch (error) {
+      dispatch(signInFailure(error.message));
+    }
+  };
+
   return (
     <div className="flex">
       <div className="max-w-lg p-10">
@@ -14,18 +58,22 @@ export default function SignIn() {
           <br /> your orders, and enhance your photography journey.
         </p>
 
-        <form className="mt-7 flex flex-col">
+        <form onSubmit={handleSubmit} className="mt-7 flex flex-col">
           <h6 className="text-gray-700">Username</h6>
           <input
             type="email"
             placeholder="yourname@gmail.com"
             className="border p-3 rounded-lg w-96"
+            id="email"
+            onChange={handleChange}
           />
           <h6 className="text-gray-700">Password</h6>
           <input
             type="password"
             placeholder="*******"
             className="border p-3 rounded-lg w-96"
+            id="password"
+            onChange={handleChange}
           />
           <div className="flex gap-40 mt-5">
             <p className="text-gray-700">Remember me</p>
@@ -35,7 +83,7 @@ export default function SignIn() {
             className="bg-black text-white p-3
         rounded-lg uppercase hover:opacity-95 disabled:opacity-80 w-96 mt-5"
           >
-            Login now
+            {loading ? "Loading..." : "Login now"}
           </button>
           <div className="mt-3">
             <OAuth />
@@ -46,6 +94,7 @@ export default function SignIn() {
               <span className="text-black font-semibold">Create one now</span>
             </Link>
           </div>
+          {error && <p className="text-red-700">{error}</p>}
         </form>
       </div>
       <div
