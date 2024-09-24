@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import {
   FaSearch,
   FaShoppingCart,
-  FaUserAlt,
   FaPhone,
   FaMapMarkerAlt,
 } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 export default function Header() {
+  const { currentUser } = useSelector((state) => state.user);
   return (
     <header className="bg-white shadow-lg py-3 text-sm">
       <div className="flex flex-col sm:flex-row justify-between items-center bg-black text-white p-2 font-thin">
@@ -59,10 +60,19 @@ export default function Header() {
             className="text-black hover:text-gray-500 cursor-pointer"
             size={20}
           />
-          <FaUserAlt
-            className="text-black hover:text-gray-500 cursor-pointer"
-            size={20}
-          />
+          <Link to={"/profile"}>
+            {currentUser ? (
+              <img
+                className="rounded-full h-7 w-7 object-cover"
+                src={currentUser.avatar}
+                alt="profile"
+              />
+            ) : (
+              <li className="text-black hover:shadow-lg font-semibold">
+                Sign In
+              </li>
+            )}
+          </Link>
           <FaShoppingCart
             className="text-black hover:text-gray-500 cursor-pointer"
             size={20}
