@@ -183,7 +183,14 @@ export default function Profile() {
       </form>
       <div className="flex justify-between mt-5">
         <span
-          onClick={handleDeleteUser}
+          onClick={() => {
+            const confirmed = window.confirm(
+              "Are you sure you want to delete your account?"
+            );
+            if (confirmed) {
+              handleDeleteUser();
+            }
+          }}
           className="text-red-800 cursor-pointer"
         >
           Delete Account
