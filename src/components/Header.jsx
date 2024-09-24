@@ -68,9 +68,11 @@ export default function Header() {
                 alt="profile"
               />
             ) : (
-              <li className="text-black hover:shadow-lg font-semibold">
-                Sign In
-              </li>
+              <ul>
+                <li className="text-black hover:shadow-lg font-semibold">
+                  Sign In
+                </li>
+              </ul>
             )}
           </Link>
           <FaShoppingCart
