@@ -6,6 +6,7 @@ import SignUp from "./pages/SignUp";
 import PrivateRoute from "./components/PrivateRoute";
 import Profile from "./pages/Profile";
 import Dashboard from "./components/admin/Dashboard";
+import CreateProduct from "./components/admin/CreateProduct";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         </Route>
         <Route element={<PrivateRoute isAdmin={true} />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/product" element={<CreateProduct />} />
         </Route>
       </Routes>
     </BrowserRouter>
