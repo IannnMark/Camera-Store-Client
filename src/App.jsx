@@ -21,7 +21,7 @@ function App() {
         </Route>
         <Route element={<PrivateRoute isAdmin={true} />}>
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/product" element={<CreateProduct />} />
+          <Route path="/create-product" element={<CreateProduct />} />
         </Route>
       </Routes>
     </BrowserRouter>
