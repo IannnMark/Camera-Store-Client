@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   FaSearch,
   FaShoppingCart,
@@ -6,9 +6,29 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 
 export default function Header() {
   const { currentUser } = useSelector((state) => state.user);
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set("searchTerm", searchTerm);
+    const searchQuery = urlParams.toString();
+    navigate(`/search?${searchQuery}`);
+  };
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search);
+    const searchTermFromUrl = urlParams.get("searchTerm");
+    if (searchTermFromUrl) {
+      setSearchTerm(searchTermFromUrl);
+    }
+  }, [location.search]);
+
   return (
     <header className="bg-white shadow-lg py-3 text-sm">
       <div className="flex flex-col sm:flex-row justify-between items-center bg-black text-white p-2 font-thin">
@@ -56,10 +76,26 @@ export default function Header() {
           </ul>
         </div>
         <div className="absolute right-0 flex gap-6 items-center pr-3">
-          <FaSearch
-            className="text-black hover:text-gray-500 cursor-pointer"
-            size={20}
-          />
+          <form
+            onSubmit={handleSubmit}
+            className="border border-gray-400 font-semibold"
+          >
+            <input
+              type="text"
+              placeholder="Search..."
+              className="bg-transparent focus:outline-none"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button>
+              <FaSearch
+                className="text-black hover:text-gray-500 cursor-pointer"
+                size={20}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </button>
+          </form>
           <Link to={"/profile"}>
             {currentUser ? (
               <img
