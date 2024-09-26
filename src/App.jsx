@@ -8,6 +8,7 @@ import Profile from "./pages/Profile";
 import Dashboard from "./components/admin/Dashboard";
 import CreateProduct from "./components/admin/CreateProduct";
 import Search from "./pages/Search";
+import Product from "./pages/Product";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="sign-in" element={<SignIn />} />
         <Route path="sign-up" element={<SignUp />} />
         <Route path="/search" element={<Search />} />
+        <Route path="/product/:productId" element={<Product />} />
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
         </Route>
