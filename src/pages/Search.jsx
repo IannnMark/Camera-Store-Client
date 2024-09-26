@@ -75,7 +75,7 @@ export default function Search() {
     urlParams.set("sort", sidebardata.sort);
     urlParams.set("order", sidebardata.order);
     const searchQuery = urlParams.toString();
-    navigate(`/Search?${searchQuery}`);
+    navigate(`/search?${searchQuery}`);
   };
 
   const onShowMoreClick = async () => {
@@ -144,7 +144,7 @@ export default function Search() {
         <h1 className="text-3xl font-semibold border-b border-gray-400 p-3 text-black mt-5">
           Products Results:
         </h1>
-        <div className="">
+        <div className="p-7 flex flex-wrap gap-4">
           {!loading && products.length === 0 && (
             <p className="text-xl text-black">No Product Found</p>
           )}
@@ -154,9 +154,9 @@ export default function Search() {
 
           {!loading &&
             products &&
-            products.map((product) => {
-              <ProductItem key={product._id} product={product} />;
-            })}
+            products.map((product) => (
+              <ProductItem key={product._id} product={product} />
+            ))}
           {showMore && (
             <button
               onClick={onShowMoreClick}
