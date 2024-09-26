@@ -73,7 +73,7 @@ export default function Home() {
           <div className="">
             <div className="my-3">
               <h2 className="text-2xl font-semibold text-black">
-                Recent Offers
+                Latest Offers with Discounts
               </h2>
               <Link
                 className="text-sm text-blue-900 hover:underline"
