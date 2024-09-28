@@ -150,7 +150,7 @@ export default function UpdateProduct() {
       if (data.success === false) {
         setError(data.message);
       }
-      navigate(`/products`);
+      navigate(`/admin/products`);
     } catch (error) {
       setError(error.message);
       setLoading(false);
