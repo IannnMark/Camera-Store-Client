@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Sidebar from "./Sidebar";
 
 export default function ProductsList() {
   const [products, setProducts] = useState([]);
@@ -54,10 +55,11 @@ export default function ProductsList() {
 
   return (
     <div className="container mx-auto p-6">
-      <h1 className="text-3xl text-white font-semibold mb-4 text-center">
+      <Sidebar />
+      <h1 className="text-3xl text-black font-semibold mb-4 text-center">
         Products List
       </h1>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto my-7">
         <table className="min-w-full bg-gray-400 text-white">
           <thead>
             <tr className="w-full border-b border-white">
@@ -73,7 +75,6 @@ export default function ProductsList() {
             </tr>
           </thead>
           <tbody>
-            
             {products.map((product) => (
               <tr key={product._id} className="border-b border-white">
                 <td className="py-3 px-6">
