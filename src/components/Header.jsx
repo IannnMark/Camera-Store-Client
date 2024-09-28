@@ -53,7 +53,7 @@ export default function Header() {
             <span className="text-black">ProCapture</span>
           </h1>
         </Link>
-        <div className="flex-grow flex justify-center">
+        <div className="flex-grow flex justify-center mr-10">
           <ul className="inline-flex gap-20">
             <li className="hidden sm:inline text-black hover:shadow-lg transition-shadow duration-200 font-semibold">
               Home
@@ -96,6 +96,29 @@ export default function Header() {
               />
             </button>
           </form>
+
+          <Link to={"/cart"}>
+            {currentUser && currentUser.role !== "admin" ? (
+              <FaShoppingCart
+                className="text-black hover:shadow-lg font-semibold cursor-pointer"
+                size={20}
+              />
+            ) : (
+              !currentUser && (
+                <FaShoppingCart
+                  className="text-black hover:shadow-lg font-semibold cursor-pointer"
+                  size={20}
+                />
+              )
+            )}
+          </Link>
+          <Link to={"/dashboard"}>
+            {currentUser && currentUser.role === "admin" && (
+              <span className="text-black hover:shadow-lg font-semibold cursor-pointer">
+                Dashboard
+              </span>
+            )}
+          </Link>
           <Link to={"/profile"}>
             {currentUser ? (
               <img
@@ -105,16 +128,12 @@ export default function Header() {
               />
             ) : (
               <ul>
-                <li className="text-black hover:shadow-lg font-semibold">
+                <li className="text-black hover:shadow-lg font-semibold cursor-pointer">
                   Sign In
                 </li>
               </ul>
             )}
           </Link>
-          <FaShoppingCart
-            className="text-black hover:text-gray-500 cursor-pointer"
-            size={20}
-          />
         </div>
       </div>
     </header>
