@@ -68,7 +68,7 @@ export default function Sidebar() {
               Products
             </Link>
             <Link
-              to="/users"
+              to="/admin/users"
               className="hover:bg-gray-700 py-2 px-3 rounded font-semibold transition duration-200"
               onClick={() => setOpen(false)}
             >

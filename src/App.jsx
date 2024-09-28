@@ -11,6 +11,7 @@ import Search from "./pages/Search";
 import Product from "./pages/Product";
 import UpdateProduct from "./components/admin/UpdateProduct";
 import ProductsList from "./components/admin/ProductsList";
+import UsersList from "./components/admin/UsersList";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             element={<UpdateProduct />}
           />
           <Route path="/admin/products" element={<ProductsList />} />
+          <Route path="/admin/users" element={<UsersList />} />
         </Route>
       </Routes>
     </BrowserRouter>
