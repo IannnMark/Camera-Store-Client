@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-const Sidebar = () => {
+export default function Sidebar() {
   const [open, setOpen] = useState(false);
   const sidebarRef = useRef(null);
 
@@ -79,6 +79,4 @@ const Sidebar = () => {
       )}
     </>
   );
-};
-
-export default Sidebar;
+}
