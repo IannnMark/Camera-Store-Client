@@ -33,7 +33,7 @@ export default function UpdateProduct() {
   useEffect(() => {
     const fetchProduct = async () => {
       const productId = params.productId;
-      const res = await fetchProduct(`/api/get/${productId}`);
+      const res = await fetch(`/api/get/${productId}`);
       const data = await res.json();
       if (data.success === false) {
         console.log(data.message);
@@ -125,12 +125,26 @@ export default function UpdateProduct() {
       });
     }
   };
+  // const handleChange = (e) => {
+  //   const { id, type, value } = e.target;
+  //   if (id === "offer") {
+  //     setFormData((prevData) => ({
+  //       ...prevData,
+  //       [id]: e.target.checked,
+  //     }));
+  //   } else {
+  //     setFormData((prevData) => ({
+  //       ...prevData,
+  //       [id]: type === "number" ? +value : value,
+  //     }));
+  //   }
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       if (formData.imageUrls.length < 1)
-        return setError("You must upload atleast one image");
+        return setError("You must upload at least one image");
       if (+formData.regularPrice < +formData.discountPrice)
         return setError("Discount price must be lower than regular price");
       setLoading(true);
@@ -212,7 +226,7 @@ export default function UpdateProduct() {
                 className="w-5"
                 id="offer"
                 onChange={handleChange}
-                value={formData.offer}
+                checked={formData.offer}
               />
               <span className="my-3 font-semibold">Offer</span>
             </div>
