@@ -8,7 +8,7 @@ export default function Sidebar() {
           Dashboard
         </Link>
         <Link
-          to="/products"
+          to="/admin/products"
           className="hover:bg-gray-700 py-2 px-3 rounded font-semibold"
         >
           Products
