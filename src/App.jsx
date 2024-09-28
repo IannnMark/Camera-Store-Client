@@ -10,6 +10,7 @@ import CreateProduct from "./components/admin/CreateProduct";
 import Search from "./pages/Search";
 import Product from "./pages/Product";
 import UpdateProduct from "./components/admin/UpdateProduct";
+import ProductsList from "./components/admin/ProductsList";
 
 function App() {
   return (
@@ -17,8 +18,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="sign-in" element={<SignIn />} />
-        <Route path="sign-up" element={<SignUp />} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/sign-up" element={<SignUp />} />
         <Route path="/search" element={<Search />} />
         <Route path="/product/:productId" element={<Product />} />
         <Route element={<PrivateRoute />}>
@@ -27,7 +28,11 @@ function App() {
         <Route element={<PrivateRoute isAdmin={true} />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/create-product" element={<CreateProduct />} />
-          <Route path="/update-product" element={<UpdateProduct />} />
+          <Route
+            path="/update-product/:productId"
+            element={<UpdateProduct />}
+          />
+          <Route path="/admin/products" element={<ProductsList />} />
         </Route>
       </Routes>
     </BrowserRouter>
