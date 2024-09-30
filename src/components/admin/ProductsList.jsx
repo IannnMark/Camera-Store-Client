@@ -60,7 +60,7 @@ export default function ProductsList() {
         Products List
       </h1>
       <div className="overflow-x-auto my-7">
-        <table className="min-w-full bg-gray-400 text-white">
+        <table className="min-w-full bg-gray-400 text-black">
           <thead>
             <tr className="w-full border-b border-white">
               <th className="py-3 px-6 text-left">Image</th>
@@ -87,20 +87,30 @@ export default function ProductsList() {
                     className="w-10 h-10 object-cover"
                   />
                 </td>
-                <td className="py-3 px-6">{product.modelName}</td>
-                <td className="py-3 px-6">{product.brand}</td>
-                <td className="py-3 px-6">
+                <td className="py-3 px-6 text-black font-normal">
+                  {product.modelName}
+                </td>
+                <td className="py-3 px-6 text-black font-normal">
+                  {product.brand}
+                </td>
+                <td className="py-3 px-6 text-black font-normal">
                   ${product.regularPrice.toLocaleString()}
                 </td>
-                <td className="py-3 px-6">
+                <td className="py-3 px-6 text-black font-normal">
                   {product.offer
                     ? `$${product.discountPrice.toLocaleString()}`
                     : "N/A"}
                 </td>
-                <td className="py-3 px-6">{product.description}</td>
-                <td className="py-3 px-6">{product.stock}</td>
-                <td className="py-3 px-6">{product.offer ? "Yes" : "No"}</td>
-                <td className="py-3 px-6">
+                <td className="py-3 px-6 text-black font-normal">
+                  {product.description}
+                </td>
+                <td className="py-3 px-6 text-black font-normal">
+                  {product.stock}
+                </td>
+                <td className="py-3 px-6 text-black font-normal">
+                  {product.offer ? "Yes" : "No"}
+                </td>
+                <td className="py-3 px-6 text-black font-normal">
                   <Link to={`/update-product/${product._id}`}>
                     <button className="text-green-800 uppercase">Edit</button>
                   </Link>
