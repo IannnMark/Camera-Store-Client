@@ -60,7 +60,7 @@ export default function ProductsList() {
         Products List
       </h1>
       <div className="overflow-x-auto my-7">
-        <table className="min-w-full bg-gray-400 text-black">
+        <table className="min-w-full bg-gray-100 text-black">
           <thead>
             <tr className="w-full border-b border-white">
               <th className="py-3 px-6 text-left">Image</th>
