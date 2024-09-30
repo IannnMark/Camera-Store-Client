@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
-// import Sidebar from "./Sidebar";
+import Sidebar from "./Sidebar";
 import DataTable from "react-data-table-component";
 
 export default function UsersList() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const fetchUsers = async () => {
     try {
@@ -13,6 +15,7 @@ export default function UsersList() {
       console.log(data);
 
       setUsers(data.users || []);
+      setFilteredUsers(data.users || []);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching Users", error);
@@ -23,6 +26,15 @@ export default function UsersList() {
   useEffect(() => {
     fetchUsers();
   }, []);
+
+  useEffect(() => {
+    const filtered = users.filter(
+      (user) =>
+        user.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        user.email.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredUsers(filtered);
+  }, [searchQuery, users]);
 
   if (loading) {
     return <p className="text-center text-white text-xl">Loading Users...</p>;
@@ -86,7 +98,7 @@ export default function UsersList() {
         <>
           <button className="text-green-800 uppercase">Edit</button>
           <button
-            className="text-red-800 uppercase"
+            className="text-red-800 uppercase ml-4"
             onClick={() => handleDeleteUser(row._id)}
           >
             Delete
@@ -100,16 +112,31 @@ export default function UsersList() {
   ];
 
   return (
-    <div className="">
-      <h1 className="">Users List</h1>
+    <div className="container mx-auto p-6">
+      <div>
+        <Sidebar />
+      </div>
+      <h1 className="text-3xl text-black font-semibold text-center mb-4">
+        Users List
+      </h1>
       <DataTable
         columns={columns}
-        data={users}
+        data={filteredUsers}
         pagination
         progressPending={loading}
         persistTableHead
         highlightOnHover
         striped
+        subHeader
+        subHeaderComponent={
+          <input
+            type="text"
+            className="border border-gray-300 rounded-lg px-3 py-1"
+            placeholder="Search...."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        }
       />
     </div>
   );
