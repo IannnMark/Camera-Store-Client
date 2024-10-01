@@ -134,7 +134,7 @@ export default function ProductsList() {
 
   return (
     <div className="container mx-auto p-6">
-      <div>
+      <div className="fixed top-0 left-0 h-screen bg-gray-800 text-white flex flex-col border-r shadow-lg z-40">
         <Sidebar />
       </div>
       <h1 className="text-3xl text-black font-semibold mb-4 text-center">
