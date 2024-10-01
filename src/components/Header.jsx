@@ -55,12 +55,16 @@ export default function Header() {
         </Link>
         <div className="flex-grow flex justify-center mr-10">
           <ul className="inline-flex gap-20">
-            <li className="hidden sm:inline text-black hover:shadow-lg transition-shadow duration-200 font-semibold">
-              Home
-            </li>
-            <li className="hidden sm:inline text-black hover:shadow-lg transition-shadow duration-200 font-semibold">
-              Shop
-            </li>
+            <Link to={"/"}>
+              <li className="hidden sm:inline text-black hover:shadow-lg transition-shadow duration-200 font-semibold">
+                Home
+              </li>
+            </Link>
+            <Link to={"/shop"}>
+              <li className="hidden sm:inline text-black hover:shadow-lg transition-shadow duration-200 font-semibold">
+                Shop
+              </li>
+            </Link>
             <li className="hidden sm:inline text-black hover:shadow-lg transition-shadow duration-200 font-semibold">
               Deals
             </li>
