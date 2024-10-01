@@ -1,8 +1,6 @@
 import { useSelector } from "react-redux";
 import { Outlet, Navigate } from "react-router-dom";
 
-import PropTypes from "prop-types";
-
 export default function PrivateRoute({ isAdmin = false }) {
   const { currentUser } = useSelector((state) => state.user);
 
@@ -19,9 +17,3 @@ export default function PrivateRoute({ isAdmin = false }) {
   //Otherwise, allow access to the protected route
   return <Outlet />;
 }
-
-PrivateRoute.propTypes = {
-  isAdmin: PropTypes.shape({
-    userRef: PropTypes.string.isRequired,
-  }).isRequired,
-};
