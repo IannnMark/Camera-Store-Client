@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
+import DataTable from "react-data-table-component";
 
 export default function ProductsList() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const fetchProducts = async () => {
     try {
@@ -13,6 +16,7 @@ export default function ProductsList() {
       console.log(data);
 
       setProducts(data.products || []);
+      setFilteredProducts(data.products || []);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -23,6 +27,15 @@ export default function ProductsList() {
   useEffect(() => {
     fetchProducts();
   }, []);
+
+  useEffect(() => {
+    const filtered = products.filter(
+      (product) =>
+        product.modelName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.brand.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredProducts(filtered);
+  }, [searchQuery, products]);
 
   if (loading) {
     return (
@@ -53,79 +66,100 @@ export default function ProductsList() {
     }
   };
 
+  const columns = [
+    {
+      name: "Image",
+      selector: (row) => (
+        <img
+          src={row.imageUrls}
+          alt={row.brand}
+          className="w-10 h-10 object-cover"
+        />
+      ),
+      sortable: false,
+    },
+    {
+      name: "Model Name",
+      selector: (row) => row.modelName,
+      sortable: true,
+    },
+    {
+      name: "Brand",
+      selector: (row) => row.brand,
+      sortable: true,
+    },
+    {
+      name: "Regular Price",
+      selector: (row) => row.regularPrice,
+      sortable: true,
+    },
+    {
+      name: "Discount Price",
+      selector: (row) => row.discountPrice,
+      sortable: true,
+    },
+    {
+      name: "Description",
+      selector: (row) => row.description,
+      sortable: true,
+    },
+    {
+      name: "Stock",
+      selector: (row) => row.stock,
+      sortable: true,
+    },
+    {
+      name: "Offer",
+      selector: (row) => row.offer,
+      sortable: true,
+    },
+    {
+      name: "Actions",
+      cell: (row) => (
+        <>
+          <Link to={`/update-product/${row._id}`}>
+            {" "}
+            <button className="text-green-800 uppercase">Edit</button>
+          </Link>
+          <button
+            className="text-red-800 uppercase ml-4"
+            onClick={() => handleDeleteProduct(row._id)}
+          >
+            Delete
+          </button>
+        </>
+      ),
+    },
+  ];
+
   return (
     <div className="container mx-auto p-6">
-      <Sidebar />
+      <div>
+        <Sidebar />
+      </div>
       <h1 className="text-3xl text-black font-semibold mb-4 text-center">
         Products List
       </h1>
-      <div className="overflow-x-auto my-7">
-        <table className="min-w-full bg-gray-100 text-black">
-          <thead>
-            <tr className="w-full border-b border-white">
-              <th className="py-3 px-6 text-left">Image</th>
-              <th className="py-3 px-6 text-left">Model Name</th>
-              <th className="py-3 px-6 text-left">Brand</th>
-              <th className="py-3 px-6 text-left">Regular Price</th>
-              <th className="py-3 px-6 text-left">Discount Price</th>
-              <th className="py-3 px-6 text-left">Description</th>
-              <th className="py-3 px-6 text-left">Stock</th>
-              <th className="py-3 px-6 text-left">Offer</th>
-              <th className="py-3 px-6 text-left">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => (
-              <tr key={product._id} className="border-b border-white">
-                <td className="py-3 px-6">
-                  <img
-                    src={
-                      product.imageUrls[0] ||
-                      "https://www.google.com/url?sa=i&url=http%3A%2F%2Fwww.sitech.co.id%2Fdetail%2F49&psig=AOvVaw3n_wa_f1cHVFMVuCmODV6s&ust=1727585795598000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCIjskt_s5IgDFQAAAAAdAAAAABAE"
-                    }
-                    alt={product.modelName}
-                    className="w-10 h-10 object-cover"
-                  />
-                </td>
-                <td className="py-3 px-6 text-black font-normal">
-                  {product.modelName}
-                </td>
-                <td className="py-3 px-6 text-black font-normal">
-                  {product.brand}
-                </td>
-                <td className="py-3 px-6 text-black font-normal">
-                  ${product.regularPrice.toLocaleString()}
-                </td>
-                <td className="py-3 px-6 text-black font-normal">
-                  {product.offer
-                    ? `$${product.discountPrice.toLocaleString()}`
-                    : "N/A"}
-                </td>
-                <td className="py-3 px-6 text-black font-normal">
-                  {product.description}
-                </td>
-                <td className="py-3 px-6 text-black font-normal">
-                  {product.stock}
-                </td>
-                <td className="py-3 px-6 text-black font-normal">
-                  {product.offer ? "Yes" : "No"}
-                </td>
-                <td className="py-3 px-6 text-black font-normal">
-                  <Link to={`/update-product/${product._id}`}>
-                    <button className="text-green-800 uppercase">Edit</button>
-                  </Link>
-                  <button
-                    className="text-red-800 uppercase"
-                    onClick={() => handleDeleteProduct(product._id)}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+
+      <DataTable
+        columns={columns}
+        data={filteredProducts}
+        pagination
+        progressPending={loading}
+        persistTableHead
+        highlightOnHover
+        striped
+        subHeader
+        subHeaderComponent={
+          <input
+            type="text"
+            className="border border-gray-400 rounded px-3 py-1"
+            placeholder="Search...."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        }
+      />
     </div>
   );
 }
