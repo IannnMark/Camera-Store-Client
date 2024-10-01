@@ -12,6 +12,7 @@ import Product from "./pages/Product";
 import UpdateProduct from "./components/admin/UpdateProduct";
 import ProductsList from "./components/admin/ProductsList";
 import UsersList from "./components/admin/UsersList";
+import Shop from "./components/admin/Shop";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/search" element={<Search />} />
         <Route path="/product/:productId" element={<Product />} />
+        <Route path="/shop" element={<Shop />} />
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
         </Route>
