@@ -125,20 +125,6 @@ export default function UpdateProduct() {
       });
     }
   };
-  // const handleChange = (e) => {
-  //   const { id, type, value } = e.target;
-  //   if (id === "offer") {
-  //     setFormData((prevData) => ({
-  //       ...prevData,
-  //       [id]: e.target.checked,
-  //     }));
-  //   } else {
-  //     setFormData((prevData) => ({
-  //       ...prevData,
-  //       [id]: type === "number" ? +value : value,
-  //     }));
-  //   }
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
