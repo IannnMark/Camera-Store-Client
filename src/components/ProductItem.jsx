@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 
 export default function ProductItem({ product }) {
   return (
@@ -31,15 +30,3 @@ export default function ProductItem({ product }) {
     </div>
   );
 }
-
-ProductItem.propTypes = {
-  product: PropTypes.shape({
-    userRef: PropTypes.string.isRequired,
-    _id: PropTypes.number.isRequired,
-    imageUrls: PropTypes.array.isRequired,
-    modelName: PropTypes.string.isRequired,
-    offer: PropTypes.bool.isRequired,
-    discountPrice: PropTypes.number.isRequired,
-    regularPrice: PropTypes.number.isRequired,
-  }).isRequired,
-};
