@@ -42,7 +42,7 @@ export default function UsersList() {
 
   const handleDeleteUser = async (userId) => {
     const confirmDelete = window.confirm(
-      "are you sure you want to delete this user?"
+      "Are you sure you want to delete this user?"
     );
     if (confirmDelete) {
       try {
@@ -112,32 +112,32 @@ export default function UsersList() {
   ];
 
   return (
-    <div className="container mx-auto p-6">
-      <div>
-        <Sidebar />
+    <div className="flex">
+      <Sidebar />
+      <div className="flex-1 p-6">
+        <h1 className="text-3xl text-black font-semibold text-center mb-4">
+          Users List
+        </h1>
+        <DataTable
+          columns={columns}
+          data={filteredUsers}
+          pagination
+          progressPending={loading}
+          persistTableHead
+          highlightOnHover
+          striped
+          subHeader
+          subHeaderComponent={
+            <input
+              type="text"
+              className="border border-gray-300 rounded-lg px-3 py-1"
+              placeholder="Search...."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          }
+        />
       </div>
-      <h1 className="text-3xl text-black font-semibold text-center mb-4">
-        Users List
-      </h1>
-      <DataTable
-        columns={columns}
-        data={filteredUsers}
-        pagination
-        progressPending={loading}
-        persistTableHead
-        highlightOnHover
-        striped
-        subHeader
-        subHeaderComponent={
-          <input
-            type="text"
-            className="border border-gray-300 rounded-lg px-3 py-1"
-            placeholder="Search...."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        }
-      />
     </div>
   );
 }
