@@ -10,7 +10,6 @@ import {
   faUsers,
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
-import PropTypes from "prop-types";
 
 const SidebarContext = createContext();
 
@@ -134,9 +133,3 @@ export function SidebarItem({ icon, text, to }) {
     </li>
   );
 }
-
-SidebarItem.propTypes = {
-  icon: PropTypes.element.isRequired,
-  text: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired,
-};
