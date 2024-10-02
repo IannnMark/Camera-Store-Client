@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 const SidebarContext = createContext();
 
 export default function Sidebar() {
-  const [expanded, setExpanded] = useState(true);
+  const [expanded] = useState(true);
   const [open, setOpen] = useState(false);
   const [showProductsSubmenu, setShowProductsSubmenu] = useState(false);
   const sidebarRef = useRef(null);
