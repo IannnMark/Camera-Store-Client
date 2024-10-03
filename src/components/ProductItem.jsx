@@ -1,9 +1,29 @@
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { addItemToCart } from "../redux/cart/cartSlice";
 
 export default function ProductItem({ product }) {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(
+      addItemToCart({
+        _id: product._id,
+        modelName: product.modelName,
+        brand: product.brand,
+        price:
+          product.offer && product.discountPrice
+            ? product.discountPrice
+            : product.regularPrice,
+        image: product.imageUrls[0],
+        stock: product.stock,
+      })
+    );
+  };
+
   return (
     <div
-      className="bg-white shadow-md hover:shadow-lg
+      className="bg-gray-300 shadow-md hover:shadow-lg
     transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]"
     >
       <Link to={`/product/${product._id}`}>
@@ -27,6 +47,12 @@ export default function ProductItem({ product }) {
           </p>
         </div>
       </Link>
+      <button
+        onClick={handleAddToCart}
+        className="text-xl text-white bg-black rounded-md ml-28"
+      >
+        Add to Cart
+      </button>
     </div>
   );
 }
