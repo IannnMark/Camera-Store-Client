@@ -12,6 +12,9 @@ export default function Header() {
   const { currentUser } = useSelector((state) => state.user);
   const [searchTerm, setSearchTerm] = useState("");
   const navigate = useNavigate();
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
+  const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -101,18 +104,32 @@ export default function Header() {
             </button>
           </form>
 
-          <Link to={"/cart"}>
+          <Link to="/cart">
             {currentUser && currentUser.role !== "admin" ? (
-              <FaShoppingCart
-                className="text-black hover:shadow-lg font-semibold cursor-pointer"
-                size={20}
-              />
-            ) : (
-              !currentUser && (
+              <div className="relative">
                 <FaShoppingCart
                   className="text-black hover:shadow-lg font-semibold cursor-pointer"
                   size={20}
                 />
+                {totalQuantity > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1">
+                    {totalQuantity}
+                  </span>
+                )}
+              </div>
+            ) : (
+              !currentUser && (
+                <div className="relative">
+                  <FaShoppingCart
+                    className="text-black hover:shadow-lg font-semibold cursor-pointer"
+                    size={20}
+                  />
+                  {totalQuantity > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1">
+                      {totalQuantity}
+                    </span>
+                  )}
+                </div>
               )
             )}
           </Link>
