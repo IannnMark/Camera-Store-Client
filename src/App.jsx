@@ -13,6 +13,7 @@ import UpdateProduct from "./components/admin/UpdateProduct";
 import ProductsList from "./components/admin/ProductsList";
 import UsersList from "./components/admin/UsersList";
 import Shop from "./components/admin/Shop";
+import Cart from "./pages/cart/Cart";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/product/:productId" element={<Product />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/cart" element={<Cart />} />
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
         </Route>
