@@ -110,7 +110,7 @@ export default function ProductsList() {
     },
     {
       name: "Offer",
-      selector: (row) => row.offer,
+      selector: (row) => (row.offer ? "Yes" : "No"),
       sortable: true,
     },
     {
