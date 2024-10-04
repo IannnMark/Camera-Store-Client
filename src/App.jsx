@@ -14,6 +14,8 @@ import ProductsList from "./components/admin/ProductsList";
 import UsersList from "./components/admin/UsersList";
 import Shop from "./components/admin/Shop";
 import Cart from "./pages/cart/Cart";
+import ConfirmOrder from "./pages/cart/ConfirmOrder";
+import Payment from "./pages/cart/Payment";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path="/product/:productId" element={<Product />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/confirm" element={<ConfirmOrder />} />
+        <Route path="/payment" element={<Payment />} />
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
         </Route>
