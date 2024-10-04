@@ -27,7 +27,7 @@ const Cart = () => {
 
   const checkOutHandler = () => {
     if (currentUser) {
-      navigate("/payment");
+      navigate("/confirm");
     } else {
       navigate("/sign-in");
     }
