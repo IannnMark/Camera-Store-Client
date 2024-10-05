@@ -16,6 +16,7 @@ import Shop from "./components/admin/Shop";
 import Cart from "./pages/cart/Cart";
 import ConfirmOrder from "./pages/cart/ConfirmOrder";
 import Payment from "./pages/cart/Payment";
+import OrderSuccess from "./pages/cart/OrderSuccess";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/confirm" element={<ConfirmOrder />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="/success" element={<OrderSuccess />} />
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
         </Route>
