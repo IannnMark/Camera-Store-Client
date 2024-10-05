@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import CheckoutSteps from "./CheckoutSteps";
 
 export default function ConfirmOrder() {
   const { cartItems } = useSelector((state) => state.cart);
@@ -25,6 +26,7 @@ export default function ConfirmOrder() {
 
   return (
     <Fragment>
+      <CheckoutSteps confirmOrder payment />
       <div className="container mx-auto mt-8">
         <h1 className="text-3xl font-semibold text-center mb-6">
           Confirm Order
@@ -51,7 +53,13 @@ export default function ConfirmOrder() {
                     </Link>
                     <p className="text-gray-700">
                       {item.quantity} x ${item.price} ={" "}
-                      <b>${(item.quantity * item.price).toFixed(2)}</b>
+                      <b>
+                        $
+                        {(item.quantity * item.price).toLocaleString("en-US", {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })}
+                      </b>
                     </p>
                   </div>
                 </div>
@@ -76,7 +84,7 @@ export default function ConfirmOrder() {
             </div>
 
             <button
-              className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600"
+              className="w-full bg-black text-white py-2 rounded-lg hover:bg-gray-800"
               onClick={processToPayment}
             >
               Proceed to Payment
