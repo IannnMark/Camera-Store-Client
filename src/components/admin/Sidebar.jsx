@@ -6,9 +6,11 @@ import {
   faBox,
   faUsers,
   faPlus,
+  faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { FaShoppingCart } from "react-icons/fa";
 
 const SidebarContext = createContext();
 
@@ -93,6 +95,12 @@ export default function Sidebar() {
                 icon={<FontAwesomeIcon icon={faUsers} />}
                 text="Users"
                 to="/admin/users"
+              />
+
+              <SidebarItem
+                icon={<FontAwesomeIcon icon={faShoppingCart} />}
+                text="Orders"
+                to="/admin/orders"
               />
             </ul>
           </SidebarContext.Provider>
