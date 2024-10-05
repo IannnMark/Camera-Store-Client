@@ -41,7 +41,7 @@ const Cart = () => {
         <div className="text-center mt-10">
           <h2 className="text-lg font-medium">Your Cart is Empty</h2>
           <button
-            className="bg-blue-500 text-white py-2 px-4 mt-4 rounded hover:bg-blue-600"
+            className="bg-black text-white py-2 px-4 mt-4 rounded hover:bg-gray-800"
             onClick={() => navigate("/shop")}
           >
             Buy Products
@@ -68,8 +68,12 @@ const Cart = () => {
                         <h3 className="font-medium">{item.modelName}</h3>
                         <p>Brand: {item.brand}</p>
                         <p>
-                          Price: ${item.price ? item.price.toFixed(2) : "N/A"}
+                          Price: $
+                          {item.price
+                            ? item.price.toFixed(2).toLocaleString("en-US")
+                            : "N/A"}
                         </p>
+
                         <p>Stock: {item.stock}</p>
                       </div>
                       <div className="flex space-x-2">
@@ -125,7 +129,7 @@ const Cart = () => {
                 </span>
               </p>
               <button
-                className="bg-green-500 text-white py-2 px-4 mt-4 rounded w-full hover:bg-green-600"
+                className="bg-black text-white py-2 px-4 mt-4 rounded w-full hover:bg-gray-800"
                 onClick={checkOutHandler}
               >
                 Check out
