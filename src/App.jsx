@@ -17,6 +17,7 @@ import Cart from "./pages/cart/Cart";
 import ConfirmOrder from "./pages/cart/ConfirmOrder";
 import Payment from "./pages/cart/Payment";
 import OrderSuccess from "./pages/cart/OrderSuccess";
+import OrdersList from "./components/admin/OrdersList";
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           />
           <Route path="/admin/products" element={<ProductsList />} />
           <Route path="/admin/users" element={<UsersList />} />
+          <Route path="/admin/orders" element={<OrdersList />} />
         </Route>
       </Routes>
     </BrowserRouter>
