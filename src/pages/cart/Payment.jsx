@@ -132,7 +132,7 @@ export default function Payment() {
       })),
       paymentInfo,
       referenceNumber: referenceNum,
-      screenShot: formData.screenShot, 
+      screenShot: formData.screenShot,
       itemsPrice: orderInfo.itemsPrice,
       shippingPrice: orderInfo.shippingPrice,
       totalPrice: orderInfo.totalPrice,
@@ -168,11 +168,10 @@ export default function Payment() {
 
   return (
     <Fragment>
-      <CheckoutSteps shipping confirmOrder payment />
+      <CheckoutSteps confirmOrder payment />
       <div className="flex justify-center items-center py-10">
         <div className="w-full max-w-lg bg-white p-8 rounded-lg shadow-lg">
           <form onSubmit={submitHandler} className="space-y-6">
-            {/* Payment Method */}
             <div className="mb-6">
               <label className="block text-gray-700 text-sm font-bold mb-2">
                 Select Payment Method:
@@ -281,9 +280,13 @@ export default function Payment() {
             <button
               type="submit"
               id="pay_btn"
-              className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="w-full bg-black hover:bg-gray-800 text-white font-bold py-2 px-4 rounded"
             >
-              Pay ₱{totalPrice.toFixed(2)}
+              Pay $
+              {Number(totalPrice).toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+              })}
             </button>
           </form>
         </div>
