@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
+import SignIn from "./pages/user/SignIn";
+import SignUp from "./pages/user/SignUp";
 import PrivateRoute from "./components/PrivateRoute";
-import Profile from "./pages/Profile";
+import Profile from "./pages/user/Profile";
 import Dashboard from "./components/admin/Dashboard";
 import CreateProduct from "./components/admin/CreateProduct";
 import Search from "./pages/Search";
