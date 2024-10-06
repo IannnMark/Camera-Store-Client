@@ -59,7 +59,7 @@ export default function OrdersList() {
     },
     {
       name: "Amount",
-      selector: (row) => row.totalPrice,
+      selector: (row) => row.totalPrice.toLocaleString(),
       sortable: true,
     },
     {
