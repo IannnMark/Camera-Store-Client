@@ -6,19 +6,24 @@ export default function ProductItem({ product }) {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    dispatch(
-      addItemToCart({
-        _id: product._id,
-        modelName: product.modelName,
-        brand: product.brand,
-        price:
-          product.offer && product.discountPrice
-            ? product.discountPrice
-            : product.regularPrice,
-        image: product.imageUrls[0],
-        stock: product.stock,
-      })
-    );
+    // Only add to cart if the product is in stock
+    if (product.stock > 0) {
+      dispatch(
+        addItemToCart({
+          _id: product._id,
+          modelName: product.modelName,
+          brand: product.brand,
+          price:
+            product.offer && product.discountPrice
+              ? product.discountPrice
+              : product.regularPrice,
+          image: product.imageUrls[0],
+          stock: product.stock,
+        })
+      );
+    } else {
+      alert("Sorry, this product is out of stock!");
+    }
   };
 
   return (
@@ -53,6 +58,11 @@ export default function ProductItem({ product }) {
       >
         Add to Cart
       </button>
+      {product.stock <= 0 && (
+        <p className="text-red-500 text-center mt-2">
+          Sorry, this product is out of stock!
+        </p>
+      )}
     </div>
   );
 }
