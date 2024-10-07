@@ -52,8 +52,10 @@ export default function Header() {
       </div>
       <div className="flex items-center max-w-6xl mx-auto p-3">
         <Link to="/" className="absolute left-0 flex-shrink-0">
-          <h1 className="font-bold text-lg sm:text-xl">
-            <span className="text-black">ProCapture</span>
+          <h1 className="font-bold text-lg sm:text-xl transition duration-300">
+            <span className="text-black hover:text-gray-500 hover:underline">
+              ProCapture
+            </span>
           </h1>
         </Link>
         <div className="flex-grow flex justify-center mr-10">
@@ -68,9 +70,11 @@ export default function Header() {
                 Shop
               </li>
             </Link>
-            <li className="hidden sm:inline text-black transition duration-300 font-semibold hover:bg-gray-500 hover:text-black px-4 py-2 rounded">
-              Deals
-            </li>
+            <Link to={"/deals"}>
+              <li className="hidden sm:inline text-black transition duration-300 font-semibold hover:bg-gray-500 hover:text-black px-4 py-2 rounded">
+                Deals
+              </li>
+            </Link>
             <li className=" hidden sm:inline text-black transition duration-300 font-semibold hover:bg-gray-500 hover:text-black px-4 py-2 rounded">
               Brands
             </li>
