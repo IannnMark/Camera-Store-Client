@@ -18,6 +18,7 @@ import ConfirmOrder from "./pages/cart/ConfirmOrder";
 import Payment from "./pages/cart/Payment";
 import OrderSuccess from "./pages/cart/OrderSuccess";
 import OrdersList from "./components/admin/OrdersList";
+import UpdateOrder from "./components/admin/UpdateOrder";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           <Route path="/admin/products" element={<ProductsList />} />
           <Route path="/admin/users" element={<UsersList />} />
           <Route path="/admin/orders" element={<OrdersList />} />
+          <Route path="/update-order/:orderId" element={<UpdateOrder />} />
         </Route>
       </Routes>
     </BrowserRouter>
