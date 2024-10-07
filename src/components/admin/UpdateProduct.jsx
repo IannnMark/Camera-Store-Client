@@ -302,7 +302,7 @@ export default function UpdateProduct() {
             className="p-3 bg-black text-white rounded-lg
         uppercase hover:opacity-95 disabled:opacity-80"
           >
-            {loading ? "Updating..." : "Update Listing"}
+            {loading ? "Updating..." : "Update Product"}
           </button>
           {error && <p className="text-red-700 text-sm">{error}</p>}
         </div>
