@@ -57,31 +57,32 @@ export default function Header() {
           </h1>
         </Link>
         <div className="flex-grow flex justify-center mr-10">
-          <ul className="inline-flex gap-20">
+          <ul className="flex gap-8 items-center">
             <Link to={"/"}>
-              <li className="hidden sm:inline text-black hover:shadow-lg transition-shadow duration-200 font-semibold">
+              <li className="hidden sm:inline text-black transition duration-300 font-semibold hover:bg-gray-500 hover:text-black px-4 py-2 rounded">
                 Home
               </li>
             </Link>
             <Link to={"/shop"}>
-              <li className="hidden sm:inline text-black hover:shadow-lg transition-shadow duration-200 font-semibold">
+              <li className="hidden sm:inline text-black transition duration-300 font-semibold hover:bg-gray-500 hover:text-black px-4 py-2 rounded">
                 Shop
               </li>
             </Link>
-            <li className="hidden sm:inline text-black hover:shadow-lg transition-shadow duration-200 font-semibold">
+            <li className="hidden sm:inline text-black transition duration-300 font-semibold hover:bg-gray-500 hover:text-black px-4 py-2 rounded">
               Deals
             </li>
-            <li className="hidden sm:inline text-black hover:shadow-lg transition-shadow duration-200 font-semibold">
+            <li className=" hidden sm:inline text-black transition duration-300 font-semibold hover:bg-gray-500 hover:text-black px-4 py-2 rounded">
               Brands
             </li>
-            <li className="hidden sm:inline text-black hover:shadow-lg transition-shadow duration-200 font-semibold">
+            <li className="hidden sm:inline text-black transition duration-300 font-semibold hover:bg-gray-500 hover:text-black px-4 py-2 rounded">
               Blog
             </li>
-            <li className="hidden sm:inline text-black hover:shadow-lg transition-shadow duration-200 font-semibold">
+            <li className="hidden sm:inline text-black transition duration-300 font-semibold hover:bg-gray-500 hover:text-black px-4 py-2 rounded">
               Support
             </li>
           </ul>
         </div>
+
         <div className="absolute right-0 flex gap-6 items-center pr-3">
           <form
             onSubmit={handleSubmit}
