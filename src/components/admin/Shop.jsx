@@ -40,25 +40,10 @@ export default function Shop() {
     };
 
     recentOfferProducts();
-  });
+  }, []);
 
   return (
     <div>
-      <div className="flex flex-col items-center gap-6 p-28 max-w-6xl mx-auto">
-        <h1 className="text-black font-bold text-6xl lg:text-7xl text-center">
-          Capture Every Moment
-        </h1>
-        <p className="font-medium text-center">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
-        </p>
-        <button className="bg-black text-white px-3 py-2 rounded-sm mt-6">
-          Call to Action
-        </button>
-      </div>
-
       <div className="max-w-6xl mx-auto flex flex-col gap-8 my-10">
         {recentProducts && recentProducts.length > 0 && (
           <div className="">
@@ -69,7 +54,7 @@ export default function Shop() {
             </div>
             <div className="flex flex-wrap gap-8">
               {recentProducts.map((product) => (
-                <ProductItem product={product} key={product.id} />
+                <ProductItem product={product} key={product._id} />
               ))}
             </div>
           </div>
@@ -88,7 +73,7 @@ export default function Shop() {
             </div>
             <div className="flex flex-wrap gap-8">
               {offerProducts.map((product) => (
-                <ProductItem product={product} key={product.id} />
+                <ProductItem product={product} key={product._id} />
               ))}
             </div>
           </div>
@@ -100,7 +85,7 @@ export default function Shop() {
             </div>
             <div className="flex flex-wrap gap-8">
               {allProducts.map((product) => (
-                <ProductItem product={product} key={product.id} />
+                <ProductItem product={product} key={product._id} />
               ))}
             </div>
           </div>
