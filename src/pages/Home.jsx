@@ -27,7 +27,7 @@ export default function Home() {
       }
     };
     recentOfferProducts();
-  });
+  }, []);
 
   return (
     <div>
@@ -64,7 +64,7 @@ export default function Home() {
             </div>
             <div className="flex flex-wrap gap-8">
               {recentProducts.map((product) => (
-                <ProductItem product={product} key={product.id} />
+                <ProductItem product={product} key={product._id} />
               ))}
             </div>
           </div>
@@ -84,7 +84,7 @@ export default function Home() {
             </div>
             <div className="flex flex-wrap gap-4">
               {offerProducts.map((product) => (
-                <ProductItem product={product} key={product} />
+                <ProductItem product={product} key={product._id} />
               ))}
             </div>
           </div>
