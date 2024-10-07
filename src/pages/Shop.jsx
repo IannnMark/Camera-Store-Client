@@ -1,4 +1,4 @@
-import ProductItem from "../ProductItem";
+import ProductItem from "../components/ProductItem";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 

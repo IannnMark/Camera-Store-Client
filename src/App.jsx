@@ -12,7 +12,7 @@ import Product from "./pages/Product";
 import UpdateProduct from "./components/admin/UpdateProduct";
 import ProductsList from "./components/admin/ProductsList";
 import UsersList from "./components/admin/UsersList";
-import Shop from "./components/admin/Shop";
+import Shop from "./pages/Shop";
 import Cart from "./pages/cart/Cart";
 import ConfirmOrder from "./pages/cart/ConfirmOrder";
 import Payment from "./pages/cart/Payment";
