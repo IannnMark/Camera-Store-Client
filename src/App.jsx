@@ -19,6 +19,7 @@ import Payment from "./pages/cart/Payment";
 import OrderSuccess from "./pages/cart/OrderSuccess";
 import OrdersList from "./components/admin/OrdersList";
 import UpdateOrder from "./components/admin/UpdateOrder";
+import Deals from "./pages/Deals";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path="/search" element={<Search />} />
         <Route path="/product/:productId" element={<Product />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/deals" element={<Deals />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/confirm" element={<ConfirmOrder />} />
         <Route path="/payment" element={<Payment />} />
