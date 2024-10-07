@@ -54,7 +54,7 @@ export default function ProductItem({ product }) {
       </Link>
       <button
         onClick={handleAddToCart}
-        className="text-xl text-white bg-black rounded-md ml-28 hover:bg-gray-800"
+        className="text-xl text-white bg-black rounded-md ml-28 hover:bg-gray-800 px-2"
       >
         Add to Cart
       </button>
