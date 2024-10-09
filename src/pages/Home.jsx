@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import aboutImage from "../../images/about-image.png";
 import contactImage from "../../images/contact-image.png";
+import Footer from "../components/Footer";
 
 export default function Home() {
   const [recentProducts, setRecentProducts] = useState([]);
@@ -138,6 +139,7 @@ export default function Home() {
           backgroundSize: "cover",
         }}
       ></div>
+      <Footer />
     </div>
   );
 }
