@@ -21,7 +21,7 @@ const cartSlice = createSlice({
                 existingItem.quantity += 1;
             } else {
                 // Add the item to cart with an initial quantity of 1
-                state.cartItems.push({ ...item, quantity: 1 });
+                state.cartItems.push({ ...item, quantity: 1, regularPrice: item.regularPrice, discountPrice: item.discountPrice });
             }
         },
         removeItemFromCart: (state, action) => {
