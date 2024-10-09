@@ -92,7 +92,7 @@ export default function Home() {
           </div>
         )}
       </div>
-      <div className="flex">
+      <div className="flex my-24">
         <div className="max-w-lg p-10">
           <h1 className="text-4xl font-bold text-left my-10 text-black">
             Your One-Stop Shop for All Your Camera Needs
