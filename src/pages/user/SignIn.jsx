@@ -52,7 +52,7 @@ export default function SignIn() {
         <h1 className="text-7xl text-left font-bold my-12 text-blue-950">
           Login
         </h1>
-        <p className="text-1xl">
+        <p className="text-xl">
           Welcome to Pro Capture – Capture every moment with the latest gear at
           your fingertips. Log in to explore exclusive deals, track your orders,
           and enhance your photography journey.
