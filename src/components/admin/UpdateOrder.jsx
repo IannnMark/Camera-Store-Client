@@ -110,7 +110,7 @@ export default function UpdateOrder() {
                       onChange={(e) => setStatus(e.target.value)}
                     >
                       <option value="Pending">Pending</option>
-                      <option value="Approved">Approved</option>
+                      <option value="Processing">Processing</option>
                       <option value="Received">Received</option>
                     </select>
                   </td>
