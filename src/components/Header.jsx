@@ -101,7 +101,7 @@ export default function Header() {
             />
             <button>
               <FaSearch
-                className="text-black hover:text-gray-500 cursor-pointer"
+                className="transition duration-300 font-semibold hover:bg-gray-500 hover:text-black cursor-pointer"
                 size={20}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
@@ -113,7 +113,7 @@ export default function Header() {
             {currentUser && currentUser.role !== "admin" ? (
               <div className="relative">
                 <FaShoppingCart
-                  className="text-black hover:shadow-lg font-semibold cursor-pointer"
+                  className="text-black transition duration-300 font-semibold hover:bg-gray-500 hover:text-black rounded"
                   size={20}
                 />
                 {totalQuantity > 0 && (
@@ -126,7 +126,7 @@ export default function Header() {
               !currentUser && (
                 <div className="relative">
                   <FaShoppingCart
-                    className="text-black hover:shadow-lg font-semibold cursor-pointer"
+                    className="text-black transition duration-300 font-semibold hover:bg-gray-500 hover:text-black rounded"
                     size={20}
                   />
                   {totalQuantity > 0 && (
@@ -140,7 +140,7 @@ export default function Header() {
           </Link>
           <Link to={"/dashboard"}>
             {currentUser && currentUser.role === "admin" && (
-              <span className="text-black hover:shadow-lg font-semibold cursor-pointer">
+              <span className="text-black transition duration-300 font-semibold hover:bg-gray-500 hover:text-black px-4 py-2 rounded">
                 Dashboard
               </span>
             )}
@@ -154,7 +154,7 @@ export default function Header() {
               />
             ) : (
               <ul>
-                <li className="text-black hover:shadow-lg font-semibold cursor-pointer">
+                <li className="text-black transition duration-300 font-semibold hover:bg-gray-500 hover:text-black px-4 py-2 rounded">
                   Sign In
                 </li>
               </ul>
