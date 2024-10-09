@@ -122,7 +122,7 @@ export default function UpdateOrder() {
               <button
                 type="submit"
                 className={`px-4 py-2 rounded-md ${
-                  uploading ? "bg-gray-400" : "bg-blue-500 hover:bg-blue-600"
+                  uploading ? "bg-gray-400" : "bg-black hover:bg-gray-500"
                 } text-white`}
                 disabled={uploading}
               >
