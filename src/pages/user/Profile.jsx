@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   getDownloadURL,
   getStorage,
@@ -180,6 +181,17 @@ export default function Profile() {
         >
           {loading ? "Loading" : "Update"}
         </button>
+        {currentUser && currentUser.role === "user" && (
+          <Link to={"/orders/me"}>
+            <button
+              disabled={loading}
+              className="bg-black text-white rounded-lg p-3
+        uppercase hover:opacity-95 disabled:opacity-80 w-full"
+            >
+              {loading ? "Loading" : "Show Orders"}
+            </button>
+          </Link>
+        )}
       </form>
       <div className="flex justify-between mt-5">
         <span
