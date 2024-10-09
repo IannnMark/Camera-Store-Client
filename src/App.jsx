@@ -20,6 +20,7 @@ import OrderSuccess from "./pages/cart/OrderSuccess";
 import OrdersList from "./components/admin/OrdersList";
 import UpdateOrder from "./components/admin/UpdateOrder";
 import Deals from "./pages/Deals";
+import ListOrders from "./pages/order/ListOrders";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path="/success" element={<OrderSuccess />} />
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
+          <Route path="/orders/me" element={<ListOrders />} />
         </Route>
         <Route element={<PrivateRoute isAdmin={true} />}>
           <Route path="/dashboard" element={<Dashboard />} />
