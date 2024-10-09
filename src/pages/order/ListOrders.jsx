@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import DataTable from "react-data-table-component";
+import { FaEye } from "react-icons/fa";
 
 export default function ListOrders() {
   const [orders, setOrders] = useState([]);
@@ -71,8 +72,10 @@ export default function ListOrders() {
       name: "Actions",
       cell: (row) => (
         <>
-          <Link>
-            <button className="uppercase">Show</button>
+          <Link to={`/order/${row._id}`}>
+            <button>
+              <FaEye size={20} />
+            </button>
           </Link>
         </>
       ),
