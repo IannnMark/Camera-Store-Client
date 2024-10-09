@@ -1,6 +1,8 @@
 import ProductItem from "../components/ProductItem";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import aboutImage from "../../images/about-image.png";
+import contactImage from "../../images/contact-image.png";
 
 export default function Home() {
   const [recentProducts, setRecentProducts] = useState([]);
@@ -90,6 +92,52 @@ export default function Home() {
           </div>
         )}
       </div>
+      <div className="flex">
+        <div className="max-w-lg p-10">
+          <h1 className="text-4xl font-bold text-left my-10 text-black">
+            Your One-Stop Shop for All Your Camera Needs
+          </h1>
+          <p className="text-left font-normal my-7 text-black">
+            Whether you're a professional photographer, aspiring enthusiast, or
+            simply capturing life's moments, we offer the latest and most
+            advanced camera gear to suit your specific needs. Our inventory
+            spans a wide range of high-resolution DSLRs, compact mirrorless
+            models, and everything in between. Whether you need something for
+            intricate, high-detail landscape photography or fast-action sports
+            shots, we have a solution for every style of shooting.
+          </p>
+          <p className="text-left font-normal my-7 text-black">
+            We take pride in offering a comprehensive selection of cameras and
+            accessories from top brands like Canon, Nikon, Sony, Fujifilm, and
+            more. Our extensive collection includes not only cameras but also
+            lenses, tripods, memory cards, and a variety of lighting solutions
+            to perfect every shot. For those who demand the very best, we also
+            offer premium professional gear.
+          </p>
+          <p className="text-left font-normal my-7 text-black">
+            Not sure where to start or need advice on which gear fits your
+            goals? Our team of expert photographers is here to assist you in
+            selecting the perfect equipment. We understand that every
+            photographer’s needs are unique, and we’ll help you find the right
+            tools to take your photography to the next level.
+          </p>
+        </div>
+
+        <div
+          className="flex-grow bg-cover bg-right rounded-lg"
+          style={{
+            backgroundImage: `url(${aboutImage})`,
+          }}
+        ></div>
+      </div>
+      <div
+        className="h-64 bg-cover mt-10"
+        style={{
+          backgroundImage: `url(${contactImage})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+        }}
+      ></div>
     </div>
   );
 }
