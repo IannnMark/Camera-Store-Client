@@ -129,13 +129,14 @@ export default function Payment() {
         quantity: item.quantity,
         price: item.price,
         image: item.image,
+        regularPrice: item.regularPrice || 0,
+        discountPrice: item.discountPrice || 0,
       })),
       paymentInfo,
       referenceNumber: referenceNum,
       screenShot: formData.screenShot,
-      itemsPrice: orderInfo.itemsPrice,
-      shippingPrice: orderInfo.shippingPrice,
-      totalPrice: orderInfo.totalPrice,
+      itemsPrice: orderInfo.itemsPrice || 0,
+      totalPrice: orderInfo.totalPrice || 0,
     };
 
     try {
@@ -154,6 +155,7 @@ export default function Payment() {
       if (response.ok) {
         dispatch(orderCreateSuccess(data.order));
         dispatch(clearCart());
+        toast.success("Order created successfully!");
         navigate("/success");
       } else {
         throw new Error(data.message || "Failed to create order");
