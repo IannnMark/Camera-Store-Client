@@ -1,6 +1,7 @@
 import ProductItem from "../components/ProductItem";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 
 export default function Shop() {
   const [recentProducts, setRecentProducts] = useState([]);
@@ -91,6 +92,7 @@ export default function Shop() {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 }
