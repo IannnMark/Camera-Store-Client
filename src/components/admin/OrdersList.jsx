@@ -42,7 +42,7 @@ export default function OrdersList() {
   }, [searchQuery, orders]);
 
   if (loading) {
-    return <p className="text-center text-white text-xl">Loading Orders...</p>;
+    return <p className="text-center text-black text-xl">Loading Orders...</p>;
   }
 
   const columns = [
