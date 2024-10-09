@@ -19,6 +19,8 @@ export default function ProductItem({ product }) {
               : product.regularPrice,
           image: product.imageUrls[0],
           stock: product.stock,
+          regularPrice: product.regularPrice,
+          discountPrice: product.discountPrice,
         })
       );
     } else {
