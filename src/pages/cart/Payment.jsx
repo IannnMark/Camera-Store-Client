@@ -149,6 +149,7 @@ export default function Payment() {
       dispatch(orderCreateRequest());
 
       const response = await fetch(`${apiUrl}/order/new`, {
+        credentials: "include",
         method: "POST",
         headers: {
           "Content-Type": "application/json",

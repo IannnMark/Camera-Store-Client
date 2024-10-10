@@ -17,7 +17,10 @@ export default function ListOrders() {
 
   const fetchOrders = async () => {
     try {
-      const res = await fetch(`${apiUrl}/orders/me`);
+      const res = await fetch(`${apiUrl}/orders/me`, {
+        method: "GET",
+        credentials: "include",
+      });
       const data = await res.json();
       console.log(data);
 

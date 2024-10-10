@@ -32,7 +32,10 @@ export default function OrderDetails() {
       try {
         setLoading(true);
         const orderId = params.orderId;
-        const res = await fetch(`${apiUrl}/order/${orderId}`);
+        const res = await fetch(`${apiUrl}/order/${orderId}`, {
+          method: "GET",
+          credentials: "include",
+        });
         const data = await res.json();
 
         if (!res.ok) {
