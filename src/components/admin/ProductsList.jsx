@@ -16,7 +16,10 @@ export default function ProductsList() {
 
   const fetchProducts = async () => {
     try {
-      const res = await fetch(`${apiUrl}/admin/products`);
+      const res = await fetch(`${apiUrl}/admin/products`, {
+        method: "GET",
+        credentials: "include",
+      });
       const data = await res.json();
       console.log(data);
 
