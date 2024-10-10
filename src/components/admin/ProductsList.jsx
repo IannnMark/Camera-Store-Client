@@ -59,6 +59,7 @@ export default function ProductsList() {
       try {
         const res = await fetch(`${apiUrl}/admin/product/delete/${productId}`, {
           method: "DELETE",
+          credentials: "include",
         });
         const data = await res.json();
         if (data.success === false) {
