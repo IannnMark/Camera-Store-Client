@@ -5,6 +5,11 @@ import aboutImage from "../../images/about-image.png";
 import contactImage from "../../images/contact-image.png";
 import heroImage from "../../images/hero-image.png";
 import Footer from "../components/Footer";
+// Set the API base URL based on the environment
+const apiUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://camera-store-api.vercel.app/api"
+    : "/api"; // Use proxy in development
 
 export default function Home() {
   const [recentProducts, setRecentProducts] = useState([]);
@@ -13,7 +18,9 @@ export default function Home() {
   useEffect(() => {
     const recentOfferProducts = async () => {
       try {
-        const res = await fetch("/api/get?limit=&&sort=createdAt&order=desc");
+        const res = await fetch(
+          `${apiUrl}/get?limit=&&sort=createdAt&order=desc`
+        );
         const data = await res.json();
         setRecentProducts(data);
         fetchOfferProducts();
@@ -23,7 +30,7 @@ export default function Home() {
     };
     const fetchOfferProducts = async () => {
       try {
-        const res = await fetch("/api/get?offer=true&limit=3");
+        const res = await fetch(`${apiUrl}/get?offer=true&limit=3`);
         const data = await res.json();
         setOfferProducts(data);
       } catch (error) {
