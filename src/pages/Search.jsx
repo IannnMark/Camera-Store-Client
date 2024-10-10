@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ProductItem from "../components/ProductItem";
+// Set the API base URL based on the environment
+const apiUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://camera-store-api.vercel.app/api"
+    : "/api"; // Use proxy in development
 
 export default function Search() {
   const navigate = useNavigate();
@@ -35,7 +40,7 @@ export default function Search() {
       setLoading(true);
       setShowMore(false);
       const searchQuery = urlParams.toString();
-      const res = await fetch(`/api/get?${searchQuery}`);
+      const res = await fetch(`${apiUrl}/get?${searchQuery}`);
       const data = await res.json();
       if (data.length > 8) {
         setShowMore(true);
@@ -84,7 +89,7 @@ export default function Search() {
     const urlParams = new URLSearchParams(location.search);
     urlParams.set("startIndex", startIndex);
     const searchQuery = urlParams.toString();
-    const res = await fetch(`/api/get?${searchQuery}`);
+    const res = await fetch(`${apiUrl}/get?${searchQuery}`);
     const data = await res.json();
     if (data.length < 9) {
       setShowMore(false);

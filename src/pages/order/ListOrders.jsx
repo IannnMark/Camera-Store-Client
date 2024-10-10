@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 import DataTable from "react-data-table-component";
 import { FaEye } from "react-icons/fa";
 
+// Set the API base URL based on the environment
+const apiUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://camera-store-api.vercel.app/api"
+    : "/api"; // Use proxy in development
+
 export default function ListOrders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -11,7 +17,7 @@ export default function ListOrders() {
 
   const fetchOrders = async () => {
     try {
-      const res = await fetch("/api/orders/me");
+      const res = await fetch(`${apiUrl}/orders/me`);
       const data = await res.json();
       console.log(data);
 

@@ -2,6 +2,12 @@ import { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 import { Link } from "react-router-dom";
 
+// Set the API base URL based on the environment
+const apiUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://camera-store-api.vercel.app/api"
+    : "/api"; // Use proxy in development
+
 export default function Dashboard() {
   const [users, setUsers] = useState([]);
   const [products, setProducts] = useState([]);
@@ -9,7 +15,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch("/api/user/admin/users");
+        const res = await fetch(`${apiUrl}/user/admin/users`);
         const data = await res.json();
 
         setUsers(data.users || []);
@@ -23,7 +29,7 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch("/api/admin/products");
+        const res = await fetch(`${apiUrl}/admin/products`);
         const data = await res.json();
 
         setProducts(data.products || []);

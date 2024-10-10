@@ -4,6 +4,12 @@ import { useDispatch } from "react-redux";
 import { signInSuccess } from "../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
 
+// Set the API base URL based on the environment
+const apiUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://camera-store-api.vercel.app/api"
+    : "/api"; // Use proxy in development
+
 export default function OAuth() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -13,7 +19,7 @@ export default function OAuth() {
       const auth = getAuth(app);
       const result = await signInWithPopup(auth, provider);
 
-      const res = await fetch("/api/auth/google", {
+      const res = await fetch(`${apiUrl}/auth/google`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

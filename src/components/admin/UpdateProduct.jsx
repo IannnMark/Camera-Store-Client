@@ -9,6 +9,12 @@ import {
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
+// Set the API base URL based on the environment
+const apiUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://camera-store-api.vercel.app/api"
+    : "/api"; // Use proxy in development
+
 export default function UpdateProduct() {
   const { currentUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -33,7 +39,7 @@ export default function UpdateProduct() {
   useEffect(() => {
     const fetchProduct = async () => {
       const productId = params.productId;
-      const res = await fetch(`/api/get/${productId}`);
+      const res = await fetch(`${apiUrl}/get/${productId}`);
       const data = await res.json();
       if (data.success === false) {
         console.log(data.message);
@@ -135,16 +141,19 @@ export default function UpdateProduct() {
         return setError("Discount price must be lower than regular price");
       setLoading(true);
       setError(false);
-      const res = await fetch(`/api/admin/product/update/${params.productId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          ...formData,
-          userRef: currentUser._id,
-        }),
-      });
+      const res = await fetch(
+        `${apiUrl}/admin/product/update/${params.productId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...formData,
+            userRef: currentUser._id,
+          }),
+        }
+      );
       const data = await res.json();
       setLoading(false);
       if (data.success === false) {

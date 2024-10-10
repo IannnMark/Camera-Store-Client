@@ -2,6 +2,12 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
+// Set the API base URL based on the environment
+const apiUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://camera-store-api.vercel.app/api"
+    : "/api"; // Use proxy in development
+
 export default function UpdateOrder() {
   const { currentUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -17,7 +23,7 @@ export default function UpdateOrder() {
       try {
         setLoading(true);
         const orderId = params.orderId;
-        const res = await fetch(`/api/order/${orderId}`);
+        const res = await fetch(`${apiUrl}/order/${orderId}`);
         const data = await res.json();
 
         if (!res.ok || data.success === false) {
@@ -41,7 +47,7 @@ export default function UpdateOrder() {
     setUploading(true);
 
     try {
-      const res = await fetch(`/api/admin/order/${params.orderId}`, {
+      const res = await fetch(`${apiUrl}/admin/order/${params.orderId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

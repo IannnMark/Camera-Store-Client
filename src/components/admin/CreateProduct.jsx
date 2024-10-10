@@ -8,6 +8,13 @@ import {
 } from "firebase/storage";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
+// Set the API base URL based on the environment
+const apiUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://camera-store-api.vercel.app/api"
+    : "/api"; // Use proxy in development
+
 export default function CreateProduct() {
   const { currentUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
@@ -119,7 +126,7 @@ export default function CreateProduct() {
         return setError("Discount Price must be lower than the regular price");
       setLoading(true);
       setError(false);
-      const res = await fetch("/api/admin/product/new", {
+      const res = await fetch(`${apiUrl}/admin/product/new`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

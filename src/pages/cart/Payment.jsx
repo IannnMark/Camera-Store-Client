@@ -17,6 +17,12 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 
+// Set the API base URL based on the environment
+const apiUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://camera-store-api.vercel.app/api"
+    : "/api"; // Use proxy in development
+
 export default function Payment() {
   let navigate = useNavigate();
   const dispatch = useDispatch();
@@ -142,7 +148,7 @@ export default function Payment() {
     try {
       dispatch(orderCreateRequest());
 
-      const response = await fetch(`/api/order/new`, {
+      const response = await fetch(`${apiUrl}/order/new`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -2,6 +2,11 @@ import React, { Fragment, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+// Set the API base URL based on the environment
+const apiUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://camera-store-api.vercel.app/api"
+    : "/api"; // Use proxy in development
 
 export default function OrderDetails() {
   const params = useParams();
@@ -27,7 +32,7 @@ export default function OrderDetails() {
       try {
         setLoading(true);
         const orderId = params.orderId;
-        const res = await fetch(`/api/order/${orderId}`);
+        const res = await fetch(`${apiUrl}/order/${orderId}`);
         const data = await res.json();
 
         if (!res.ok) {

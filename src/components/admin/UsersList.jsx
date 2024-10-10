@@ -2,6 +2,12 @@ import { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import DataTable from "react-data-table-component";
 
+// Set the API base URL based on the environment
+const apiUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://camera-store-api.vercel.app/api"
+    : "/api"; // Use proxy in development
+
 export default function UsersList() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -10,7 +16,7 @@ export default function UsersList() {
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch("/api/user/admin/users");
+      const res = await fetch(`${apiUrl}/user/admin/users`);
       const data = await res.json();
       console.log(data);
 

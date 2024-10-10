@@ -1,6 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import OAuth from "../../components/OAuth";
+// Set the API base URL based on the environment
+const apiUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://camera-store-api.vercel.app/api"
+    : "/api"; // Use proxy in development
 
 export default function SignUp() {
   const [formData, setFormData] = useState({});
@@ -19,7 +24,7 @@ export default function SignUp() {
     e.preventDefault();
     try {
       setLoading(true);
-      const res = await fetch("/api/auth/signup", {
+      const res = await fetch(`${apiUrl}/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

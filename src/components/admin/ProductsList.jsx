@@ -2,6 +2,11 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import DataTable from "react-data-table-component";
+// Set the API base URL based on the environment
+const apiUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://camera-store-api.vercel.app/api"
+    : "/api"; // Use proxy in development
 
 export default function ProductsList() {
   const [products, setProducts] = useState([]);
@@ -11,7 +16,7 @@ export default function ProductsList() {
 
   const fetchProducts = async () => {
     try {
-      const res = await fetch("/api/admin/products");
+      const res = await fetch(`${apiUrl}/admin/products`);
       const data = await res.json();
       console.log(data);
 
@@ -49,7 +54,7 @@ export default function ProductsList() {
     );
     if (confirmDelete) {
       try {
-        const res = await fetch(`/api/admin/product/delete/${productId}`, {
+        const res = await fetch(`${apiUrl}/admin/product/delete/${productId}`, {
           method: "DELETE",
         });
         const data = await res.json();
