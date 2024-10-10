@@ -10,7 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FaShoppingCart } from "react-icons/fa";
+
 
 const SidebarContext = createContext();
 
