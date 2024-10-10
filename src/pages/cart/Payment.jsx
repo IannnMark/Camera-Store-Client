@@ -208,7 +208,7 @@ export default function Payment() {
               <>
                 <div className="text-center">
                   <img
-                    src="../../images/gcashqr.jpg"
+                    src="../../images/G_Cash_QR_Template.png"
                     alt="GCash QR Code"
                     className="w-1/2 mx-auto mb-4"
                   />
