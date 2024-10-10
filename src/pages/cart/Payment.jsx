@@ -17,6 +17,8 @@ import {
   uploadBytesResumable,
 } from "firebase/storage";
 
+import gcashQr from "../../../images/G_Cash_QR_Template.png";
+
 // Set the API base URL based on the environment
 const apiUrl =
   process.env.NODE_ENV === "production"
@@ -215,7 +217,7 @@ export default function Payment() {
               <>
                 <div className="text-center">
                   <img
-                    src="../../images/G_Cash_QR_Template.png"
+                    src={gcashQr}
                     alt="GCash QR Code"
                     className="w-1/2 mx-auto mb-4"
                   />
