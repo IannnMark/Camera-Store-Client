@@ -15,7 +15,10 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch(`${apiUrl}/user/admin/users`);
+        const res = await fetch(`${apiUrl}/user/admin/users`, {
+          method: "GET",
+          credentials: "include",
+        });
         const data = await res.json();
 
         setUsers(data.users || []);
@@ -29,7 +32,10 @@ export default function Dashboard() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch(`${apiUrl}/admin/products`);
+        const res = await fetch(`${apiUrl}/admin/products`, {
+          method: "GET",
+          credentials: "include",
+        });
         const data = await res.json();
 
         setProducts(data.products || []);
