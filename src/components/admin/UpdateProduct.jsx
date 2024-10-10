@@ -39,7 +39,10 @@ export default function UpdateProduct() {
   useEffect(() => {
     const fetchProduct = async () => {
       const productId = params.productId;
-      const res = await fetch(`${apiUrl}/get/${productId}`);
+      const res = await fetch(`${apiUrl}/get/${productId}`, {
+        method: "GET",
+        credentials: "include",
+      });
       const data = await res.json();
       if (data.success === false) {
         console.log(data.message);
