@@ -31,7 +31,7 @@ export default function ProductItem({ product }) {
   return (
     <div
       className="bg-gray-300 shadow-md hover:shadow-lg
-    transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px]"
+    transition-shadow overflow-hidden rounded-lg w-full sm:w-[330px] ml-3"
     >
       <Link to={`/product/${product._id}`}>
         <img
@@ -39,7 +39,7 @@ export default function ProductItem({ product }) {
           alt="Product Cover"
           className="h-[320px] sm:h-[220px] w-full object-cover hover:scale-105 transition-scale duration-300"
         />
-        <div className="p-3 flex flex-col gap-2">
+        <div className="p-3 flex flex-col gap-2 hover:scale-105 transition-scale duration-300">
           <p className="truncate text-lg font-semibold text-black">
             {product.modelName}
           </p>
