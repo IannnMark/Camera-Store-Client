@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import aboutImage from "../../images/about-image.png";
 import contactImage from "../../images/contact-image.png";
+import heroImage from "../../images/hero-image.png";
 import Footer from "../components/Footer";
 
 export default function Home() {
@@ -50,7 +51,7 @@ export default function Home() {
         <div
           className="relative w-[1128px] h-[720px] flex justify-center items-end rounded-md"
           style={{
-            backgroundImage: "url('../../images/hero-image.png')",
+            backgroundImage: `url(${heroImage})`,
             backgroundSize: "cover",
             backgroundPosition: "bottom",
           }}
