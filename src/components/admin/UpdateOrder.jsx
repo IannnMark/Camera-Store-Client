@@ -49,6 +49,7 @@ export default function UpdateOrder() {
     try {
       const res = await fetch(`${apiUrl}/admin/order/${params.orderId}`, {
         method: "PUT",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },

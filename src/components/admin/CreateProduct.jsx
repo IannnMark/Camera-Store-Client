@@ -128,6 +128,7 @@ export default function CreateProduct() {
       setError(false);
       const res = await fetch(`${apiUrl}/admin/product/new`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },

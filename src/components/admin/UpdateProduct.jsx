@@ -145,6 +145,7 @@ export default function UpdateProduct() {
         `${apiUrl}/admin/product/update/${params.productId}`,
         {
           method: "PUT",
+          credentials: "include",
           headers: {
             "Content-Type": "application/json",
           },
