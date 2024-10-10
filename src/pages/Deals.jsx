@@ -1,6 +1,11 @@
 import ProductItem from "../components/ProductItem";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+// Set the API base URL based on the environment
+const apiUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://camera-store-api.vercel.app/api"
+    : "/api"; // Use proxy in development
 
 export default function Deals() {
   const [offerProducts, setOfferProducts] = useState([]);
@@ -8,7 +13,7 @@ export default function Deals() {
   useEffect(() => {
     const fetchOfferProducts = async () => {
       try {
-        const res = await fetch("/api/get?offer=true&limit=3");
+        const res = await fetch(`${apiUrl}/get?offer=true&limit=3`);
         const data = await res.json();
         setOfferProducts(data);
       } catch (error) {
