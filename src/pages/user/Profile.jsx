@@ -78,6 +78,7 @@ export default function Profile() {
       dispatch(updateUserStart());
       const res = await fetch(`${apiUrl}/user/update/${currentUser._id}`, {
         method: "PUT",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
