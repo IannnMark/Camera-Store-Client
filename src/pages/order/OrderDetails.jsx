@@ -2,6 +2,8 @@ import React, { Fragment, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import logo from "../../../images/logo.png";
+
 // Set the API base URL based on the environment
 const apiUrl =
   process.env.NODE_ENV === "production"
@@ -88,7 +90,7 @@ export default function OrderDetails() {
             <div ref={contentArea}>
               <div className="text-center">
                 <img
-                  src="../../images/logo.png"
+                  src={logo}
                   alt="Company Logo"
                   className="mx-auto mb-4 w-32 h-auto"
                 />
