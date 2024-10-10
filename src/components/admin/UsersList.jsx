@@ -16,7 +16,10 @@ export default function UsersList() {
 
   const fetchUsers = async () => {
     try {
-      const res = await fetch(`${apiUrl}/user/admin/users`);
+      const res = await fetch(`${apiUrl}/user/admin/users`, {
+        method: "GET",
+        credentials: "include",
+      });
       const data = await res.json();
       console.log(data);
 
