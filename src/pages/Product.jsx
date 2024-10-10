@@ -3,6 +3,12 @@ import { useParams } from "react-router-dom";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
+// Set the API base URL based on the environment
+const apiUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://camera-store-api.vercel.app/api"
+    : "/api"; // Use proxy in development
+
 export default function Product() {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -13,7 +19,7 @@ export default function Product() {
     const fetchProduct = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`/api/get/${params.productId}`);
+        const res = await fetch(`${apiUrl}/get/${params.productId}`);
         const data = await res.json();
         if (data.success === false) {
           setError(true);
