@@ -75,9 +75,11 @@ export default function Header() {
                 Deals
               </li>
             </Link>
-            <li className=" hidden sm:inline text-black transition duration-300 font-semibold hover:bg-gray-500 hover:text-black px-4 py-2 rounded">
-              Brands
-            </li>
+            <Link to={"/brands"}>
+              <li className=" hidden sm:inline text-black transition duration-300 font-semibold hover:bg-gray-500 hover:text-black px-4 py-2 rounded">
+                Brands
+              </li>
+            </Link>
             <li className="hidden sm:inline text-black transition duration-300 font-semibold hover:bg-gray-500 hover:text-black px-4 py-2 rounded">
               Blog
             </li>
