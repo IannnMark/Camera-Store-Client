@@ -68,7 +68,7 @@ export default function BrandProducts() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-300">
+    <div className="min-h-screen bg-gray-100">
       <h2 className="text-3xl text-center font-semibold mb-8">
         Products for {brandId} Brand
       </h2>
