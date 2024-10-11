@@ -38,7 +38,7 @@ export default function Brands() {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="text-center text-xl">Loading...</div>;
   }
 
   if (error) {
