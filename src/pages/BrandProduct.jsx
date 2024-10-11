@@ -37,7 +37,7 @@ export default function BrandProducts() {
   }, [brandId]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="text-center text-xl">Loading...</div>;
   }
 
   if (error) {
@@ -81,12 +81,12 @@ export default function BrandProducts() {
               <img
                 src={product.imageUrls[0]}
                 alt={product.modelName}
-                className="h-[320px] sm:h-[220px] w-full object-cover"
+                className="h-[320px] sm:h-[220px] w-full object-cover hover:scale-105 transition-scale duration-300"
               />
-              <h3 className="text-xl font-bold text-gray-800 mb-2">
+              <h3 className="text-xl font-bold text-gray-800 mb-2 hover:scale-105 transition-scale duration-300">
                 {product.modelName}
               </h3>
-              <p className="text-gray-700 font-semibold mt-2">
+              <p className="text-gray-700 font-semibold mt-2 hover:scale-105 transition-scale duration-300">
                 $
                 {product.offer && product.discountPrice
                   ? product.discountPrice.toLocaleString("en-US")
