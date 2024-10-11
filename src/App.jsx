@@ -22,6 +22,7 @@ import UpdateOrder from "./components/admin/UpdateOrder";
 import Deals from "./pages/Deals";
 import ListOrders from "./pages/order/ListOrders";
 import OrderDetails from "./pages/order/OrderDetails";
+import Brands from "./pages/Brands";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <Route path="/confirm" element={<ConfirmOrder />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/success" element={<OrderSuccess />} />
+        <Route path="/brands" element={<Brands />} />
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
           <Route path="/orders/me" element={<ListOrders />} />
