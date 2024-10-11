@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
 
 // Set the API base URL based on the environment
 const apiUrl =
@@ -11,6 +12,7 @@ export default function Brands() {
   const [brands, setBrands] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBrands = async () => {
@@ -31,6 +33,10 @@ export default function Brands() {
     fetchBrands();
   }, []);
 
+  const handleBrandClick = (brandId) => {
+    navigate(`/product/brand/${brandId}`);
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -50,6 +56,7 @@ export default function Brands() {
             <div
               key={brand._id}
               className="bg-white p-6 rounded-lg shadow-md hover:shadow-xl transition duration-300"
+              onClick={() => handleBrandClick(brand._id)}
             >
               {brand.products[0]?.imageUrls && (
                 <img

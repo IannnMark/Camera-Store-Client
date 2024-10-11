@@ -23,6 +23,7 @@ import Deals from "./pages/Deals";
 import ListOrders from "./pages/order/ListOrders";
 import OrderDetails from "./pages/order/OrderDetails";
 import Brands from "./pages/Brands";
+import BrandProducts from "./pages/BrandProduct";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path="/payment" element={<Payment />} />
         <Route path="/success" element={<OrderSuccess />} />
         <Route path="/brands" element={<Brands />} />
+        <Route path="/product/brand/:brandId" element={<BrandProducts />} />
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
           <Route path="/orders/me" element={<ListOrders />} />
