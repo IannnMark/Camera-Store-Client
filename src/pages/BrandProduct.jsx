@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../redux/cart/cartSlice";
+
 import Footer from "../components/Footer";
 
-// Set the API base URL based on the environment
 const apiUrl =
   process.env.NODE_ENV === "production"
     ? "https://camera-store-api.vercel.app/api"
-    : "/api"; // Use proxy in development
+    : "/api";
 
 export default function BrandProducts() {
   const { brandId } = useParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchProductsByBrand = async () => {
@@ -40,6 +43,28 @@ export default function BrandProducts() {
   if (error) {
     return <div>{error}</div>;
   }
+
+  const handleAddToCart = (product) => {
+    if (product.stock > 0) {
+      dispatch(
+        addItemToCart({
+          _id: product._id,
+          modelName: product.modelName,
+          brand: product.brand,
+          price:
+            product.offer && product.discountPrice
+              ? product.discountPrice
+              : product.regularPrice,
+          image: product.imageUrls[0],
+          stock: product.stock,
+          regularPrice: product.regularPrice,
+          discountPrice: product.discountPrice,
+        })
+      );
+    } else {
+      alert("Sorry, this product is out of stock!");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -70,6 +95,17 @@ export default function BrandProducts() {
                   : "N/A"}{" "}
                 USD
               </p>
+              <button
+                onClick={() => handleAddToCart(product)}
+                className="text-xl text-white bg-black rounded-md hover:bg-gray-800 px-2 mt-4"
+              >
+                Add to Cart
+              </button>
+              {product.stock <= 0 && (
+                <p className="text-red-500 text-center mt-2">
+                  Sorry, this product is out of stock!
+                </p>
+              )}
             </div>
           ))}
         </div>
