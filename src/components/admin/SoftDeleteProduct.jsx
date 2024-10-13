@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import DataTable from "react-data-table-component";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faUndo } from "@fortawesome/free-solid-svg-icons";
 
 const apiUrl =
   process.env.NODE_ENV === "production"
@@ -156,14 +158,14 @@ export default function SoftDeleteProduct() {
             className="text-green-800 uppercase"
             onClick={() => handleRestoreProduct(row._id)}
           >
-            Restore
+            <FontAwesomeIcon icon={faUndo} className="mr-1 h-5" />
           </button>
 
           <button
             className="text-red-800 uppercase ml-4"
             onClick={() => handleDeleteProduct(row._id)}
           >
-            Delete
+            <FontAwesomeIcon icon={faTrash} className="mr-1 h-5" />
           </button>
         </>
       ),
@@ -176,7 +178,7 @@ export default function SoftDeleteProduct() {
         <Sidebar />
       </div>
       <h1 className="text-3xl text-black font-semibold mb-4 text-center">
-        Soft-Deleted Products
+        Archived Products
       </h1>
 
       <DataTable
