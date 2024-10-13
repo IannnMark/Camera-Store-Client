@@ -53,21 +53,24 @@ export default function ProductsList() {
 
   const handleDeleteProduct = async (productId) => {
     const confirmDelete = window.confirm(
-      "Are you sure you want to delete this product?"
+      "Are you sure you want to soft-delete this product?"
     );
     if (confirmDelete) {
       try {
-        const res = await fetch(`${apiUrl}/admin/product/delete/${productId}`, {
-          method: "DELETE",
-          credentials: "include",
-        });
+        const res = await fetch(
+          `${apiUrl}/admin/product/soft-delete/${productId}`,
+          {
+            method: "DELETE",
+            credentials: "include",
+          }
+        );
         const data = await res.json();
         if (data.success === false) {
           console.log(data.message);
           return;
         }
 
-        alert("Product deleted successfully");
+        alert("Product soft-deleted successfully");
         window.location.reload();
       } catch (error) {
         console.log(error.message);
