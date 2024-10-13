@@ -11,6 +11,7 @@ const apiUrl =
 export default function Dashboard() {
   const [users, setUsers] = useState([]);
   const [products, setProducts] = useState([]);
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -44,6 +45,23 @@ export default function Dashboard() {
       }
     };
     fetchProducts();
+  }, []);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const res = await fetch(`${apiUrl}/admin/orders`, {
+          method: "GET",
+          credentials: "include",
+        });
+        const data = await res.json();
+
+        setOrders(data.orders || []);
+      } catch (error) {
+        console.log("Error fetching Orders", error);
+      }
+    };
+    fetchOrders();
   }, []);
 
   return (
@@ -82,6 +100,23 @@ export default function Dashboard() {
             <Link
               to={"/admin/products"}
               className="bg-gray-700 hover:bg-gray-950 transition-colors text-white py-3 px-4 flex justify-center items-center space-x-2"
+            >
+              <span className="font-semibold">View Details</span>
+              <span className="text-xl">
+                <i className="fa fa-angle-right"></i>
+              </span>
+            </Link>
+          </div>
+          <div className="bg-red-700 text-white shadow-lg rounded-lg overflow-hidden h-full transition transform hover:scale-105">
+            <div className="p-6 text-center">
+              <h2 className="text-xl font-semibold">Products</h2>
+              <p className="text-2xl mt-2">
+                <b>{orders && orders.length}</b>
+              </p>
+            </div>
+            <Link
+              to={"/admin/orders"}
+              className="bg-red-950 hover:bg-gray-950 transition-colors text-white py-3 px-4 flex justify-center items-center space-x-2"
             >
               <span className="font-semibold">View Details</span>
               <span className="text-xl">
