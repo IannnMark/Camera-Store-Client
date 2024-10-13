@@ -24,6 +24,7 @@ import ListOrders from "./pages/order/ListOrders";
 import OrderDetails from "./pages/order/OrderDetails";
 import Brands from "./pages/Brands";
 import BrandProducts from "./pages/BrandProduct";
+import SoftDeleteProduct from "./components/admin/SoftDeleteProduct";
 
 function App() {
   return (
@@ -59,6 +60,10 @@ function App() {
           <Route path="/admin/users" element={<UsersList />} />
           <Route path="/admin/orders" element={<OrdersList />} />
           <Route path="/update-order/:orderId" element={<UpdateOrder />} />
+          <Route
+            path="/admin/soft-deleted-products"
+            element={<SoftDeleteProduct />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>
