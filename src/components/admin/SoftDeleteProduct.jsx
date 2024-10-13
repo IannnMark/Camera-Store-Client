@@ -73,6 +73,34 @@ export default function SoftDeleteProduct() {
     }
   };
 
+  const handleRestoreProduct = async (productId) => {
+    const confirmRestore = window.confirm(
+      "Are you sure you want to restore this product?"
+    );
+
+    if (confirmRestore) {
+      try {
+        const res = await fetch(
+          `${apiUrl}/admin/product/restore-product/${productId}`,
+          {
+            method: "POST",
+            credentials: "include",
+          }
+        );
+        const data = await res.json();
+        if (data.success === false) {
+          console.log(data.message);
+          return;
+        }
+
+        alert("Product Restored Successfully");
+        window.location.reload();
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+  };
+
   const columns = [
     {
       name: "Image",
@@ -124,7 +152,12 @@ export default function SoftDeleteProduct() {
       name: "Actions",
       cell: (row) => (
         <>
-          <button className="text-green-800 uppercase">Restore</button>
+          <button
+            className="text-green-800 uppercase"
+            onClick={() => handleRestoreProduct(row._id)}
+          >
+            Restore
+          </button>
 
           <button
             className="text-red-800 uppercase ml-4"
