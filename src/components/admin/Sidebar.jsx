@@ -11,7 +11,6 @@ import {
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-
 const SidebarContext = createContext();
 
 export default function Sidebar() {
@@ -81,6 +80,11 @@ export default function Sidebar() {
                       icon={<FontAwesomeIcon icon={faBox} />}
                       text="Products"
                       to="/admin/products"
+                    />
+                    <SidebarItem
+                      icon={<FontAwesomeIcon icon={faBox} />}
+                      text="Soft-Deleted Products"
+                      to="/admin/soft-deleted-products"
                     />
                     <SidebarItem
                       icon={<FontAwesomeIcon icon={faPlus} />}
