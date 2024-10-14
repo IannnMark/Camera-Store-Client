@@ -83,7 +83,7 @@ export default function Sidebar() {
                     />
                     <SidebarItem
                       icon={<FontAwesomeIcon icon={faBox} />}
-                      text="Soft-Deleted Products"
+                      text="Archived Products"
                       to="/admin/soft-deleted-products"
                     />
                     <SidebarItem
