@@ -57,6 +57,7 @@ export default function UsersList() {
       try {
         const res = await fetch(`${apiUrl}/user/admin/delete/${userId}`, {
           method: "DELETE",
+          credentials: "include",
         });
         const data = await res.json();
         if (data.success === false) {
