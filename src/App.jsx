@@ -25,6 +25,7 @@ import OrderDetails from "./pages/order/OrderDetails";
 import Brands from "./pages/Brands";
 import BrandProducts from "./pages/BrandProduct";
 import ArchivedProducts from "./components/admin/ArchivedProducts";
+import ArchivedUsers from "./components/admin/ArchivedUsers";
 
 function App() {
   return (
@@ -64,6 +65,7 @@ function App() {
             path="/admin/archived-products"
             element={<ArchivedProducts />}
           />
+          <Route path="/admin/archive-users" element={<ArchivedUsers />} />
         </Route>
       </Routes>
     </BrowserRouter>
