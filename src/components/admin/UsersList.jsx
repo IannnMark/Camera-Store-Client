@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import DataTable from "react-data-table-component";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 // Set the API base URL based on the environment
 const apiUrl =
@@ -109,12 +111,14 @@ export default function UsersList() {
       name: "Actions",
       cell: (row) => (
         <>
-          <button className="text-green-800 uppercase">Edit</button>
+          <button className="text-green-800 uppercase">
+            <FontAwesomeIcon icon={faEdit} className="mr-1 h-5" />
+          </button>
           <button
             className="text-red-800 uppercase ml-4"
             onClick={() => handleDeleteUser(row._id)}
           >
-            Delete
+            <FontAwesomeIcon icon={faTrash} className="mr-1 h-5" />
           </button>
         </>
       ),
