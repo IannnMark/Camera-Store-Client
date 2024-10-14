@@ -73,7 +73,7 @@ export default function ProductsList() {
           return;
         }
 
-        alert("Product soft-deleted successfully");
+        alert("Product archived successfully");
         window.location.reload();
       } catch (error) {
         console.log(error.message);
