@@ -85,7 +85,7 @@ export default function Sidebar() {
                     <SidebarItem
                       icon={<FontAwesomeIcon icon={faBox} />}
                       text="Archived Products"
-                      to="/admin/soft-deleted-products"
+                      to="/admin/archived-products"
                     />
                     <SidebarItem
                       icon={<FontAwesomeIcon icon={faPlus} />}

@@ -61,7 +61,7 @@ function App() {
           <Route path="/admin/orders" element={<OrdersList />} />
           <Route path="/update-order/:orderId" element={<UpdateOrder />} />
           <Route
-            path="/admin/soft-deleted-products"
+            path="/admin/archived-products"
             element={<ArchivedProducts />}
           />
         </Route>
