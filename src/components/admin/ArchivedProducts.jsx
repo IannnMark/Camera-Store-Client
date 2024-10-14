@@ -9,7 +9,7 @@ const apiUrl =
     ? "https://camera-store-api.vercel.app/api"
     : "/api";
 
-export default function SoftDeleteProduct() {
+export default function ArchivedProducts() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filteredProducts, setFilteredProducts] = useState([]);
