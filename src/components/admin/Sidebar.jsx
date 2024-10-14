@@ -17,6 +17,7 @@ export default function Sidebar() {
   const [expanded] = useState(true);
   const [open, setOpen] = useState(false);
   const [showProductsSubmenu, setShowProductsSubmenu] = useState(false);
+  const [showUsersSubmenu, setShowUsersSubmenu] = useState(false);
   const sidebarRef = useRef(null);
 
   const toggleDrawer = () => {
@@ -95,11 +96,29 @@ export default function Sidebar() {
                 )}
               </li>
 
-              <SidebarItem
-                icon={<FontAwesomeIcon icon={faUsers} />}
-                text="Users"
-                to="/admin/users"
-              />
+              <li className="relative">
+                <button
+                  onClick={() => setShowUsersSubmenu((prev) => !prev)}
+                  className="flex items-center py-2 px-3 my-1 font-medium rounded-md text-gray-400 w-full hover:bg-gray-700 transition-colors"
+                >
+                  <FontAwesomeIcon icon={faUsers} className="mr-2" />
+                  <span>Users</span>
+                </button>
+                {showUsersSubmenu && (
+                  <ul className="pl-4">
+                    <SidebarItem
+                      icon={<FontAwesomeIcon icon={faUsers} />}
+                      text="Users"
+                      to="/admin/users"
+                    />
+                    <SidebarItem
+                      icon={<FontAwesomeIcon icon={faUsers} />}
+                      text="Archived Users"
+                      to="/admin/soft-deleted-users"
+                    />
+                  </ul>
+                )}
+              </li>
 
               <SidebarItem
                 icon={<FontAwesomeIcon icon={faShoppingCart} />}
