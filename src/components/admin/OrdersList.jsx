@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import DataTable from "react-data-table-component";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 // Set the API base URL based on the environment
 const apiUrl =
@@ -86,13 +88,15 @@ export default function OrdersList() {
       cell: (row) => (
         <>
           <Link to={`/update-order/${row._id}`}>
-            <button className="text-green-800 uppercase">Edit</button>
+            <button className="text-green-800 uppercase">
+              <FontAwesomeIcon icon={faEdit} className="mr-1 h-5" />
+            </button>
           </Link>
           <button
             className="text-red-800 uppercase ml-4"
             onClick={() => handleDeleteOrder(row._id)}
           >
-            Delete
+            <FontAwesomeIcon icon={faTrash} className="mr-1 h-5" />
           </button>
         </>
       ),
