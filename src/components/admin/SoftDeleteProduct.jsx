@@ -85,7 +85,7 @@ export default function SoftDeleteProduct() {
         const res = await fetch(
           `${apiUrl}/admin/product/restore-product/${productId}`,
           {
-            method: "POST",
+            method: "PUT",
             credentials: "include",
           }
         );
