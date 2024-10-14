@@ -92,7 +92,7 @@ export default function Header() {
         <div className="absolute right-0 flex gap-6 items-center pr-3">
           <form
             onSubmit={handleSubmit}
-            className="border border-gray-400 font-semibold"
+            className="hidden lg:inline border border-gray-400 font-semibold"
           >
             <input
               type="text"
@@ -142,7 +142,7 @@ export default function Header() {
           </Link>
           <Link to={"/dashboard"}>
             {currentUser && currentUser.role === "admin" && (
-              <span className="text-black transition duration-300 font-semibold hover:bg-gray-500 hover:text-black px-4 py-2 rounded">
+              <span className=" hidden lg:inline text-black transition duration-300 font-semibold hover:bg-gray-500 hover:text-black px-4 py-2 rounded">
                 Dashboard
               </span>
             )}
