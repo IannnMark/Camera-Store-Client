@@ -109,7 +109,7 @@ export default function Dashboard() {
           </div>
           <div className="bg-red-700 text-white shadow-lg rounded-lg overflow-hidden h-full transition transform hover:scale-105">
             <div className="p-6 text-center">
-              <h2 className="text-xl font-semibold">Products</h2>
+              <h2 className="text-xl font-semibold">Orders</h2>
               <p className="text-2xl mt-2">
                 <b>{orders && orders.length}</b>
               </p>
