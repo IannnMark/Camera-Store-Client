@@ -114,7 +114,7 @@ export default function Sidebar() {
                     <SidebarItem
                       icon={<FontAwesomeIcon icon={faUsers} />}
                       text="Archived Users"
-                      to="/admin/soft-deleted-users"
+                      to="/admin/archive-users"
                     />
                   </ul>
                 )}
