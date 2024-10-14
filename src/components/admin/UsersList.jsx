@@ -51,20 +51,23 @@ export default function UsersList() {
 
   const handleDeleteUser = async (userId) => {
     const confirmDelete = window.confirm(
-      "Are you sure you want to delete this user?"
+      "Are you sure you want to archive this user?"
     );
     if (confirmDelete) {
       try {
-        const res = await fetch(`${apiUrl}/user/admin/delete/${userId}`, {
-          method: "DELETE",
-          credentials: "include",
-        });
+        const res = await fetch(
+          `${apiUrl}/user/admin/user/soft-delete/${userId}`,
+          {
+            method: "DELETE",
+            credentials: "include",
+          }
+        );
         const data = await res.json();
         if (data.success === false) {
           console.log(data.message);
           return;
         }
-        alert("User deleted successfully");
+        alert("User archive successfully");
         window.location.reload();
       } catch (error) {
         console.log(error.message);
