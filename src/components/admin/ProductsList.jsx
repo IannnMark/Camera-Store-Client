@@ -56,7 +56,7 @@ export default function ProductsList() {
 
   const handleDeleteProduct = async (productId) => {
     const confirmDelete = window.confirm(
-      "Are you sure you want to soft-delete this product?"
+      "Are you sure you want to archive this product?"
     );
     if (confirmDelete) {
       try {
