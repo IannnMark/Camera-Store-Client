@@ -18,6 +18,7 @@ export default function Sidebar() {
   const [open, setOpen] = useState(false);
   const [showProductsSubmenu, setShowProductsSubmenu] = useState(false);
   const [showUsersSubmenu, setShowUsersSubmenu] = useState(false);
+  const [showOrdersSubmenu, setShowOrdersSubmenu] = useState(false);
   const sidebarRef = useRef(null);
 
   const toggleDrawer = () => {
@@ -119,12 +120,29 @@ export default function Sidebar() {
                   </ul>
                 )}
               </li>
-
-              <SidebarItem
-                icon={<FontAwesomeIcon icon={faShoppingCart} />}
-                text="Orders"
-                to="/admin/orders"
-              />
+              <li className="relative">
+                <button
+                  onClick={() => setShowOrdersSubmenu((prev) => !prev)}
+                  className="flex items-center py-2 px-3 my-1 font-medium rounded-md text-gray-400 w-full hover:bg-gray-700 transition-colors"
+                >
+                  <FontAwesomeIcon icon={faShoppingCart} className="mr-2" />
+                  <span>Orders</span>
+                </button>
+                {showOrdersSubmenu && (
+                  <ul className="pl-4">
+                    <SidebarItem
+                      icon={<FontAwesomeIcon icon={faShoppingCart} />}
+                      text="Orders"
+                      to="/admin/orders"
+                    />
+                    <SidebarItem
+                      icon={<FontAwesomeIcon icon={faShoppingCart} />}
+                      text="Archived Orders"
+                      to="/admin/archive-orders"
+                    />
+                  </ul>
+                )}
+              </li>
             </ul>
           </SidebarContext.Provider>
         </motion.div>
