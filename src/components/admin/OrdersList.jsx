@@ -56,10 +56,38 @@ export default function OrdersList() {
     return <p className="text-center text-black text-xl">Loading Orders...</p>;
   }
 
+  const handleDeleteOrder = async (orderId) => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to archive this order?"
+    );
+
+    if (confirmDelete) {
+      try {
+        const res = await fetch(
+          `${apiUrl}/admin/order/soft-delete/${orderId}`,
+          {
+            method: "DELETE",
+            credentials: "include",
+          }
+        );
+        const data = await res.json();
+        if (data.success === false) {
+          console.log(data.message);
+          return;
+        }
+
+        alert("Order archived successfully");
+        window.location.reload();
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+  };
+
   const columns = [
     {
       name: "Username",
-      selector: (row) => row.user?.username || "N/A", // Handle null user
+      selector: (row) => row.user?.username || "N/A",
       sortable: true,
     },
     {
